@@ -2,15 +2,65 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Arvo", serif;
+  font-size: 10px;
+  background-color: var(--light);
+}
+
+p {
+  margin-top: 1.2em;
+  line-height: 1.8;
+}
+
+p,
+h6 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 2.376rem;
+}
+
+h3 {
+  font-size: 3.656rem;
+}
+
+h2 {
+  font-size: 4.5712rem;
+}
+
+h1 {
+  font-size: 6.4rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.6em;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  color: var(--red);
 }
 
 a {
-  color: inherit;
+  color: var(--red);
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --light: #eaecef;
+  --white: #ffffff;
+  --red: #cc4425;
+  --dark: #3e4147;
 }
