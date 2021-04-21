@@ -8,6 +8,12 @@
 
 .title {
   margin-top: 0;
-  font-size: 12.8rem;
+  font-size: 6rem;
   letter-spacing: 3px;
+}
+
+@media screen and (min-width: 600px) {
+  .title {
+    font-size: 12.8rem;
+  }
 }

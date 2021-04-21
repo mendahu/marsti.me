@@ -2,7 +2,10 @@
   background-color: var(--dark);
   border-radius: 16px;
   color: var(--light);
-  width: 32%;
+  margin: 3rem 1.5rem 0 1.5rem;
+  box-shadow: 1px 1px 5px 0px var(--dark);
+  max-width: 450px;
+  flex: 1 1 295px;
 }
 
 .banner {

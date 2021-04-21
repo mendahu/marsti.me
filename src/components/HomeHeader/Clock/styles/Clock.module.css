@@ -7,20 +7,38 @@
 }
 
 .main {
-  font-size: 14.3rem;
+  font-size: 7.2rem;
 }
 
 .secondary {
-  font-size: 7.15rem;
+  font-size: 3.2rem;
 }
 
 .secondaryContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 0.9rem;
+  margin-top: 0.2rem;
 }
 
 .tertiary {
-  font-size: 4.8rem;
+  font-size: 3rem;
+}
+
+@media screen and (min-width: 600px) {
+  .main {
+    font-size: 14.3rem;
+  }
+
+  .secondary {
+    font-size: 7.15rem;
+  }
+
+  .secondaryContainer {
+    margin-top: 0.9rem;
+  }
+
+  .tertiary {
+    font-size: 4.8rem;
+  }
 }

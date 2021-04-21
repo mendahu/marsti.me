@@ -45,6 +45,12 @@ export default function Home() {
             missionStart={new Date("2021-02-18T20:55:00Z")}
             bannerUrl={"/perseverance_banner.png"}
           />
+          <MissionCard
+            name={"Ingenuity"}
+            lon={lons.igy}
+            missionStart={new Date("2021-04-03T00:00:00Z")}
+            bannerUrl={"/ingenuity_banner.png"}
+          />
         </section>
       </main>
     </>

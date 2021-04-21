@@ -5,6 +5,7 @@ export const useMissionLon = () => {
     msl: 222.5583,
     m20: 282.5492,
     ins: 224.3766,
+    igy: 282.5489,
   };
 
   const [lons, setLons] = useState(defaultState);
