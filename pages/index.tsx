@@ -3,6 +3,7 @@ import HomeHeader from "../src/components/HomeHeader/HomeHeader";
 import styles from "../styles/Home.module.css";
 import MissionCard from "../src/components/MissionCard/MissionCard";
 import { useMissionLon } from "../src/hooks/useMissionLon";
+import DateConverter from "../src/components/DateConverter/DateConverter";
 
 export default function Home() {
   const lons = useMissionLon();
@@ -52,9 +53,7 @@ export default function Home() {
             bannerUrl={"/msl_banner.png"}
           />
         </section>
-        <section>
-          <h2>Convert a Date</h2>
-        </section>
+        <DateConverter />
       </main>
     </>
   );

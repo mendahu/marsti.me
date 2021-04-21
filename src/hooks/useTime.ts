@@ -31,8 +31,8 @@ export const useTime = () => {
   };
 
   const getLTST = (lon: number = 0) => {
-    const mst = cd.getLTST(lon);
-    return generateTimeObj(mst);
+    const tst = cd.getLTST(lon);
+    return generateTimeObj(tst);
   };
 
   return { getLMST, getLTST, year, ls };
