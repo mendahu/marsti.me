@@ -1,10 +1,9 @@
 import Head from "next/head";
-import MissionCard from "../src/components/MissionCard";
-import { useCurrentTime } from "../src/hooks/useCurrentTime";
+import HomeHeader from "../src/components/HomeHeader/HomeHeader";
+import styles from "../styles/Home.module.css";
+import MissionCard from "../src/components/MissionCard/MissionCard";
 
 export default function Home() {
-  const { mst, my, ls } = useCurrentTime();
-
   return (
     <>
       <Head>
@@ -18,21 +17,13 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <main>
-        <header>
-          <h1>The current time on Mars is</h1>
-          <p>MY{my}</p>
-          <p>
-            L<sub>s</sub> {Math.round(ls * 1000) / 1000}
-          </p>
-          <p>{mst} MST</p>
-          <p>
-            Join 10,000+ designers, get your next design inspiration delivered
-            right to your inbox + free PDF guide with the most popular Google
-            Font pairs:
-          </p>
-        </header>
+      <main className={styles.root}>
+        <HomeHeader />
         <section>
           <MissionCard
             name={"Curiosity"}

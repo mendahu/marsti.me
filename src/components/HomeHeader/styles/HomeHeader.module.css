@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin-top: 0;
+  font-size: 12.8rem;
+  letter-spacing: 3px;
+}
