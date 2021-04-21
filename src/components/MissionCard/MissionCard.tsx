@@ -14,7 +14,7 @@ export const MissionCard = (props: MissionCardProps) => {
   return (
     <article>
       <h2>{props.name}</h2>
-      <p>Longitude {props.lon} W</p>
+      <p>LON {props.lon} W</p>
       <p>Mission Sol: {sol}</p>
       <p>
         {hour}:{min}:{sec} LMST

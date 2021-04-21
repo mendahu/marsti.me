@@ -4,7 +4,7 @@ import styles from "./styles/Clock.module.css";
 export type ClockProps = {};
 
 export default function Clock(props: ClockProps) {
-  const { hour, min, sec } = useCurrentTime(224.3766);
+  const { hour, min, sec } = useCurrentTime();
 
   return (
     <div className={styles.root}>

@@ -24,7 +24,7 @@ export default function Home() {
       </Head>
       <main className={styles.root}>
         <HomeHeader />
-        <section>
+        <section className={styles.missionContainer}>
           <MissionCard
             name={"Curiosity"}
             lon={222.5583}

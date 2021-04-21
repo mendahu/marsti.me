@@ -5,6 +5,11 @@
   max-width: 960px;
 }
 
+.missionContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 600px) {
   .root {
     width: 80%;
