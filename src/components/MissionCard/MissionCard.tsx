@@ -30,13 +30,19 @@ export const MissionCard = (props: MissionCardProps) => {
           className={styles.banner}
         />
       </div>
-      <div>
+      <div className={styles.textContainer}>
         <h3>{props.name}</h3>
-        <p>LON {formatLon(props.lon)} W</p>
-        <p>Mission Sol: {sol}</p>
-        <p>
-          {hour}:{min}:{sec} LMST
-        </p>
+        <div className={styles.subheaderContainer}>
+          <span className={styles.subheader}>Sol: {sol}</span>
+          <span className={styles.subheader}>
+            {formatLon(props.lon)}&#176; W
+          </span>
+        </div>
+        <div className={styles.clockContainer}>
+          <span className={styles.clock}>
+            {hour}:{min}:{sec} LMST
+          </span>
+        </div>
       </div>
     </article>
   );
