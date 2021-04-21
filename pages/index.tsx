@@ -28,16 +28,10 @@ export default function Home() {
         <HomeHeader />
         <section className={styles.missionContainer}>
           <MissionCard
-            name={"Curiosity"}
-            lon={lons.msl}
-            missionStart={new Date("2012-08-06T05:17:57Z")}
-            bannerUrl={"/msl_banner.png"}
-          />
-          <MissionCard
-            name={"InSight"}
-            lon={lons.ins}
-            missionStart={new Date("2018-11-26T19:52:59Z")}
-            bannerUrl={"/insight_banner.png"}
+            name={"Ingenuity"}
+            lon={lons.igy}
+            missionStart={new Date("2021-04-03T00:00:00Z")}
+            bannerUrl={"/ingenuity_banner.png"}
           />
           <MissionCard
             name={"Perseverance"}
@@ -46,11 +40,20 @@ export default function Home() {
             bannerUrl={"/perseverance_banner.png"}
           />
           <MissionCard
-            name={"Ingenuity"}
-            lon={lons.igy}
-            missionStart={new Date("2021-04-03T00:00:00Z")}
-            bannerUrl={"/ingenuity_banner.png"}
+            name={"InSight"}
+            lon={lons.ins}
+            missionStart={new Date("2018-11-26T19:52:59Z")}
+            bannerUrl={"/insight_banner.png"}
           />
+          <MissionCard
+            name={"Curiosity"}
+            lon={lons.msl}
+            missionStart={new Date("2012-08-06T05:17:57Z")}
+            bannerUrl={"/msl_banner.png"}
+          />
+        </section>
+        <section>
+          <h2>Convert a Date</h2>
         </section>
       </main>
     </>

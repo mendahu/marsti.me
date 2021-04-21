@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 export const useTime = () => {
   const [cd, setCd] = useState<MarsDate>(new MarsDate(new Date()));
 
+  const year = cd.getCalendarYear();
+  const ls = cd.getLs();
+
   const resetClock = () => {
     setCd(new MarsDate(new Date()));
   };
@@ -32,5 +35,5 @@ export const useTime = () => {
     return generateTimeObj(mst);
   };
 
-  return { getLMST, getLTST };
+  return { getLMST, getLTST, year, ls };
 };
