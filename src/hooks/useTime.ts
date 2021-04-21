@@ -1,7 +1,7 @@
 import { MarsDate } from "mars-date-utils";
 import { useEffect, useState } from "react";
 
-export const useCurrentTime = () => {
+export const useTime = () => {
   const [cd, setCd] = useState<MarsDate>(new MarsDate(new Date()));
 
   const resetClock = () => {

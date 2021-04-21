@@ -1,4 +1,4 @@
-import { useCurrentTime } from "../../../hooks/useCurrentTime";
+import { useCurrentTime } from "../../../contexts/CurrentTimeContext";
 import styles from "./styles/Clock.module.css";
 
 export type ClockProps = {};

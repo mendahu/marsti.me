@@ -1,4 +1,4 @@
-import { useCurrentTime } from "../../hooks/useCurrentTime";
+import { useCurrentTime } from "../../contexts/CurrentTimeContext";
 import { useMissionTime } from "../../hooks/useMissionTime";
 
 export type MissionCardProps = {
