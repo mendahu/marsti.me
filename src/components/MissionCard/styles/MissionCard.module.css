@@ -17,13 +17,13 @@
 }
 
 .subheaderContainer {
-  margin-top: 1rem;
+  margin-top: 1.4rem;
   display: flex;
   justify-content: space-between;
 }
 
 .subheader {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .clockContainer {
