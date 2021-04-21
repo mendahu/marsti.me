@@ -31,16 +31,19 @@ export default function Home() {
             name={"Curiosity"}
             lon={lons.msl}
             missionStart={new Date("2012-08-06T05:17:57Z")}
+            bannerUrl={"/msl_banner.png"}
           />
           <MissionCard
             name={"InSight"}
             lon={lons.ins}
             missionStart={new Date("2018-11-26T19:52:59Z")}
+            bannerUrl={"/insight_banner.png"}
           />
           <MissionCard
             name={"Perseverance"}
             lon={lons.m20}
             missionStart={new Date("2021-02-18T20:55:00Z")}
+            bannerUrl={"/perseverance_banner.png"}
           />
         </section>
       </main>
