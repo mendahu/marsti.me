@@ -8,7 +8,8 @@ export type MissionCardProps = {
 };
 
 export const MissionCard = (props: MissionCardProps) => {
-  const { hour, min, sec } = useCurrentTime(props.lon);
+  const { getLMST } = useCurrentTime();
+  const { hour, min, sec } = getLMST(props.lon);
   const { sol } = useMissionTime(props.missionStart, props.lon);
 
   return (

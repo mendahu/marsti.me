@@ -1,33 +1,12 @@
 import { MarsDate } from "mars-date-utils";
 import { useEffect, useState } from "react";
 
-export const useCurrentTime = (lon: number = 0) => {
-  const [hour, setHour] = useState(0);
-  const [min, setMin] = useState(0);
-  const [sec, setSec] = useState(0);
+export const useCurrentTime = () => {
+  const [cd, setCd] = useState<MarsDate>(new MarsDate(new Date()));
 
   const resetClock = () => {
-    const cd = new MarsDate(new Date());
-    const mst = cd.getLMST(lon);
-
-    const breakBits = (mst: string) => {
-      return {
-        hour: Number(mst.slice(0, 2)),
-        minute: Number(mst.slice(3, 5)),
-        second: Number(mst.slice(6, 8)),
-      };
-    };
-
-    const bits = breakBits(mst);
-
-    setHour(bits.hour);
-    setMin(bits.minute);
-    setSec(bits.second);
+    setCd(new MarsDate(new Date()));
   };
-
-  useEffect(() => {
-    resetClock();
-  }, []);
 
   useEffect(() => {
     setInterval(() => {
@@ -35,13 +14,23 @@ export const useCurrentTime = (lon: number = 0) => {
     }, 1000);
   }, []);
 
-  const addLeadingZero = (num: number) => {
-    return ("0" + num).toString().slice(-2);
+  const generateTimeObj = (time: string) => {
+    return {
+      hour: time.slice(0, 2),
+      min: time.slice(3, 5),
+      sec: time.slice(6, 8),
+    };
   };
 
-  return {
-    hour: addLeadingZero(hour),
-    min: addLeadingZero(min),
-    sec: addLeadingZero(sec),
+  const getLMST = (lon: number = 0) => {
+    const mst = cd.getLMST(lon);
+    return generateTimeObj(mst);
   };
+
+  const getLTST = (lon: number = 0) => {
+    const mst = cd.getLTST(lon);
+    return generateTimeObj(mst);
+  };
+
+  return { getLMST, getLTST };
 };

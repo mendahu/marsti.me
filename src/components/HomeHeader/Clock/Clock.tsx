@@ -4,7 +4,8 @@ import styles from "./styles/Clock.module.css";
 export type ClockProps = {};
 
 export default function Clock(props: ClockProps) {
-  const { hour, min, sec } = useCurrentTime();
+  const { getLMST } = useCurrentTime();
+  const { hour, min, sec } = getLMST();
 
   return (
     <div className={styles.root}>
