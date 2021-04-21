@@ -27,6 +27,7 @@ export const MissionCard = (props: MissionCardProps) => {
           alt={`${props.name} Mission Banner`}
           width={450}
           height={150}
+          className={styles.banner}
         />
       </div>
       <div>
