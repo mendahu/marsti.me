@@ -2,8 +2,10 @@ import Head from "next/head";
 import HomeHeader from "../src/components/HomeHeader/HomeHeader";
 import styles from "../styles/Home.module.css";
 import MissionCard from "../src/components/MissionCard/MissionCard";
+import { useMissionLon } from "../src/hooks/useMissionLon";
 
 export default function Home() {
+  const lons = useMissionLon();
   return (
     <>
       <Head>
@@ -27,17 +29,17 @@ export default function Home() {
         <section className={styles.missionContainer}>
           <MissionCard
             name={"Curiosity"}
-            lon={222.5583}
+            lon={lons.msl}
             missionStart={new Date("2012-08-06T05:17:57Z")}
           />
           <MissionCard
             name={"InSight"}
-            lon={224.3766}
+            lon={lons.ins}
             missionStart={new Date("2018-11-26T19:52:59Z")}
           />
           <MissionCard
             name={"Perseverance"}
-            lon={282.5492}
+            lon={lons.m20}
             missionStart={new Date("2021-02-18T20:55:00Z")}
           />
         </section>

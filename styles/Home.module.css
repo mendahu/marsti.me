@@ -8,6 +8,7 @@
 .missionContainer {
   display: flex;
   justify-content: space-between;
+  flex: 1 0 30%;
 }
 
 @media screen and (min-width: 600px) {
