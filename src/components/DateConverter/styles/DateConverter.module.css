@@ -5,3 +5,7 @@
 .container {
   display: flex;
 }
+
+.slider {
+  width: 100%;
+}
