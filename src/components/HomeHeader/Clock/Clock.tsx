@@ -29,7 +29,7 @@ export default function Clock(props: ClockProps) {
       <div className={styles.date}>
         <div>
           <span>
-            L<sub>S</sub> {roundedLs}
+            L<sub>S</sub> {roundedLs}&deg;
           </span>
         </div>
         <div>

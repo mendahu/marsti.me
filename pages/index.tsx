@@ -7,6 +7,7 @@ import DateConverter from "../src/components/DateConverter/DateConverter";
 
 export default function Home() {
   const lons = useMissionLon();
+
   return (
     <>
       <Head>
@@ -54,6 +55,9 @@ export default function Home() {
           />
         </section>
         <DateConverter />
+        <section>
+          <h2 id="faq">Learn about Mars Time</h2>
+        </section>
       </main>
     </>
   );

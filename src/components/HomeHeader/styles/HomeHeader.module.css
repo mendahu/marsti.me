@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.button {
+  margin-top: 2rem;
+}
+
 .title {
   margin-top: 0;
   font-size: 6rem;

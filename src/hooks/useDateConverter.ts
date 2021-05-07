@@ -32,8 +32,6 @@ export const useDateConverter = () => {
       convertTimezoneToSliderVal(timezone)
     )}`;
 
-    console.log(dateString);
-
     setMarsDate(createMarsDate(dateString));
   }, [year, month, day, hour, second, minute, timezone]);
 

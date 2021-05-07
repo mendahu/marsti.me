@@ -1,5 +1,4 @@
 export const generateTimezoneString = (timezone: number) => {
-  console.log(timezone);
   const sign = timezone < 0 ? "-" : "+";
 
   const hours = Math.trunc(timezone / 4);
@@ -9,6 +8,6 @@ export const generateTimezoneString = (timezone: number) => {
   const min = ("0" + minutes).toString().slice(-2);
 
   const tzString = `${sign}${hour}:${min}`;
-  console.log(tzString);
+
   return tzString;
 };

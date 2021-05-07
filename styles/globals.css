@@ -5,6 +5,7 @@ body {
   font-family: "Arvo", serif;
   font-size: 10px;
   background-color: var(--light);
+  scroll-behavior: smooth;
 }
 
 p {
@@ -56,6 +57,28 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+button {
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  padding: 1.2rem 2.4rem;
+  border: none;
+  border-radius: 2px;
+  color: var(--light);
+}
+
+button.primary {
+  background-color: var(--red);
+}
+
+button.secondary {
+  background-color: var(--dark);
 }
 
 :root {
