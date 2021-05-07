@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import MissionCard from "../src/components/MissionCard/MissionCard";
 import { useMissionLon } from "../src/hooks/useMissionLon";
 import DateConverter from "../src/components/DateConverter/DateConverter";
+import LearnSection from "../src/components/LearnSection/LearnSection";
 
 export default function Home() {
   const lons = useMissionLon();
@@ -55,9 +56,7 @@ export default function Home() {
           />
         </section>
         <DateConverter />
-        <section>
-          <h2 id="faq">Learn about Mars Time</h2>
-        </section>
+        <LearnSection />
       </main>
     </>
   );

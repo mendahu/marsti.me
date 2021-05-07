@@ -1,0 +1,16 @@
+.root {
+  width: 100%;
+  display: flex;
+  min-height: 400px;
+  margin-top: 4rem;
+  border: 1px solid var(--medium);
+}
+
+.nav {
+  flex-basis: 200px;
+  min-width: 200px;
+}
+
+.content {
+  flex-grow: 1;
+}
