@@ -31,6 +31,18 @@ export default function Home() {
         <HomeHeader />
         <section className={styles.missionContainer}>
           <MissionCard
+            name={"Zhurong Rover"}
+            lon={lons.zhu}
+            missionStart={new Date("2021-05-14T23:18:00Z")}
+            bannerUrl={"/zhurong_banner.png"}
+          />
+          <MissionCard
+            name={"Zhurong Platform"}
+            lon={lons.zhu}
+            missionStart={new Date("2021-05-14T23:18:00Z")}
+            bannerUrl={"/zhurong_banner.png"}
+          />
+          <MissionCard
             name={"Ingenuity"}
             lon={lons.igy}
             missionStart={new Date("2021-04-03T00:00:00Z")}
