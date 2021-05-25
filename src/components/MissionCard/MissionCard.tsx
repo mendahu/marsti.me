@@ -40,7 +40,10 @@ export const MissionCard = (props: MissionCardProps) => {
         </div>
         <div className={styles.clockContainer}>
           <span className={styles.clock}>
-            {hour}:{min}:{sec} LMST
+            {hour}:{min}:{sec}
+          </span>
+          <span className={styles.clockLegend}>
+            <abbr title="Local Mean Solar Time">LMST</abbr>
           </span>
         </div>
       </div>

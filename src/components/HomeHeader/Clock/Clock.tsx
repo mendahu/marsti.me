@@ -22,18 +22,25 @@ export default function Clock(props: ClockProps) {
             <span className={styles.secondary}>:{sec}</span>
           </div>
           <div>
-            <span className={styles.tertiary}>MST</span>
+            <span className={styles.tertiary}>
+              <abbr title="Mean Solar Time">MST</abbr>
+            </span>
           </div>
         </div>
       </div>
       <div className={styles.date}>
         <div>
           <span>
-            L<sub>S</sub> {roundedLs}&deg;
+            <abbr title="Solar Longitude">
+              L<sub>S</sub>
+            </abbr>{" "}
+            {roundedLs}&deg;
           </span>
         </div>
         <div>
-          <span>MY {year}</span>
+          <span>
+            <abbr title="Mars Year">MY</abbr> {year}
+          </span>
         </div>
       </div>
     </div>

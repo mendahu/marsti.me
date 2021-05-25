@@ -14,6 +14,9 @@
 
 .textContainer {
   padding: 0 2rem 4rem 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .subheaderContainer {
@@ -28,11 +31,18 @@
 
 .clockContainer {
   margin-top: 3rem;
-  text-align: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .clock {
-  font-size: 2.8rem;
+  font-size: 4rem;
   font-family: "Oxygen Mono", monospace;
   font-weight: 400;
+}
+
+.clockLegend {
+  font-size: 2rem;
 }
