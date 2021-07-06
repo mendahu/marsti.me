@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+const mslUrl =
+  "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints_current.json";
+const m20Url =
+  "https://mars.nasa.gov/mmgis-maps/M20/Layers/json/M20_waypoints_current.json";
+
 export const useMissionLon = () => {
   const defaultState = {
     msl: 222.5583,
@@ -12,9 +17,7 @@ export const useMissionLon = () => {
   const [lons, setLons] = useState(defaultState);
 
   useEffect(() => {
-    fetch(
-      "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints_current.json"
-    )
+    fetch(mslUrl)
       .then((res) => {
         return res.json();
       })
@@ -22,13 +25,14 @@ export const useMissionLon = () => {
         const lonE = res.features[0].geometry.coordinates[0];
         const lonW = 360 - lonE;
         setLons((prev) => ({ ...prev, msl: lonW }));
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 
   useEffect(() => {
-    fetch(
-      "https://mars.nasa.gov/mmgis-maps/M20/Layers/json/M20_waypoints_current.json"
-    )
+    fetch(m20Url)
       .then((res) => {
         return res.json();
       })
@@ -36,6 +40,9 @@ export const useMissionLon = () => {
         const lonE = res.features[0].geometry.coordinates[0];
         const lonW = 360 - lonE;
         setLons((prev) => ({ ...prev, m20: lonW }));
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 
