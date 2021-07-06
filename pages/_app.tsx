@@ -5,6 +5,11 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { useTime } from "../src/hooks/useTime";
 import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 
+const oswaldFontFamily = {
+  fontFamily: ["Oswald", "sans-serif"].join(","),
+  color: "#cc4425",
+};
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -21,30 +26,12 @@ const theme = createTheme({
     },
   },
   typography: {
-    h1: {
-      fontFamily: ["Oswald", "sans-serif"].join(","),
-      color: "#cc4425",
-    },
-    h2: {
-      fontFamily: ["Oswald", "sans-serif"].join(","),
-      color: "#cc4425",
-    },
-    h3: {
-      fontFamily: ["Oswald", "sans-serif"].join(","),
-      color: "#cc4425",
-    },
-    h4: {
-      fontFamily: ["Oswald", "sans-serif"].join(","),
-      color: "#cc4425",
-    },
-    h5: {
-      fontFamily: ["Oswald", "sans-serif"].join(","),
-      color: "#cc4425",
-    },
-    h6: {
-      fontFamily: ["Oswald", "sans-serif"].join(","),
-      color: "#cc4425",
-    },
+    h1: oswaldFontFamily,
+    h2: oswaldFontFamily,
+    h3: oswaldFontFamily,
+    h4: oswaldFontFamily,
+    h5: oswaldFontFamily,
+    h6: oswaldFontFamily,
   },
 });
 

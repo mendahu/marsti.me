@@ -1,10 +1,10 @@
 import Head from "next/head";
 import HomeHeader from "../src/components/HomeHeader/HomeHeader";
-import styles from "../styles/Home.module.css";
 import MissionCard from "../src/components/MissionCard/MissionCard";
 import { useMissionLon } from "../src/hooks/useMissionLon";
 import DateConverter from "../src/components/DateConverter/DateConverter";
 import LearnSection from "../src/components/LearnSection/LearnSection";
+import { Container } from "@material-ui/core";
 
 const starts = {
   zhu: new Date("2021-05-14T23:18:00Z"),
@@ -35,9 +35,9 @@ export default function Home() {
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
       </Head>
-      <main className={styles.root}>
+      <Container maxWidth="md">
         <HomeHeader />
-        <section className={styles.missionContainer}>
+        {/* <section className={styles.missionContainer}>
           <MissionCard
             name={"Zhurong"}
             lon={lons.zhu}
@@ -70,8 +70,8 @@ export default function Home() {
           />
         </section>
         <DateConverter />
-        <LearnSection />
-      </main>
+        <LearnSection /> */}
+      </Container>
     </>
   );
 }

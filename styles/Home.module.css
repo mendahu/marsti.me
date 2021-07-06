@@ -1,19 +1,6 @@
-.root {
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  max-width: 960px;
-}
-
 .missionContainer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 2rem;
-}
-
-@media screen and (min-width: 600px) {
-  .root {
-    width: 80%;
-  }
 }
