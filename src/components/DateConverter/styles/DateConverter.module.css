@@ -1,8 +1,11 @@
+.root {
+  margin-top: 4rem;
+}
+
 .container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 2rem;
 }
 
 .dateSection {
@@ -10,6 +13,10 @@
   max-width: 450px;
   margin: 3rem 1.5rem 0 0rem;
   flex: 1 1 295px;
+}
+
+.dateSection input {
+  font-size: 1.6rem;
 }
 
 .fieldRow {
