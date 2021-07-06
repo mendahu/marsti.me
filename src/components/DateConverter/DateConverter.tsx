@@ -11,22 +11,14 @@ export default function DateConverter(props: DateConverterProps) {
   const [earthDate, setEarthDate] = useState(new Date());
   const marsDate = new MarsDate(earthDate);
 
-  const onChange = (value: string, callback) => {
-    if (isNaN(Number(value))) {
-      return;
-    } else {
-      callback(value);
-    }
-  };
-
   return (
     <section className={styles.root}>
       <h2>Convert a Date</h2>
 
       <div className={styles.container}>
         <div className={styles.dateSection}>
-          <h3>Input Earth Date</h3>
-          <KeyboardDateTimePicker value={new Date()} onChange={setEarthDate} />
+          <h3 className={styles.inputHeader}>Input Earth Date</h3>
+          <KeyboardDateTimePicker value={earthDate} onChange={setEarthDate} />
         </div>
 
         <div className={styles.dateSection}>

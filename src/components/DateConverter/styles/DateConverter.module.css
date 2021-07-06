@@ -8,6 +8,10 @@
   flex-wrap: wrap;
 }
 
+.inputHeader {
+  margin-bottom: 1rem;
+}
+
 .dateSection {
   width: 100%;
   max-width: 450px;
