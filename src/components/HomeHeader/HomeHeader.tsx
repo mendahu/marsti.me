@@ -1,10 +1,24 @@
 import Clock from "./Clock/Clock";
-import { Button, Grid, Typography, Container } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  makeStyles,
+  Typography,
+  Container,
+  Theme,
+} from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 export type HomeHeaderProps = {};
 
+const useStyles = makeStyles((theme: Theme) => ({
+  button: {
+    marginTop: "1rem",
+  },
+}));
+
 export default function HomeHeader(props: HomeHeaderProps) {
+  const classes = useStyles();
   const isWideScreen = useMediaQuery("(min-width:415px)");
 
   return (
@@ -23,7 +37,13 @@ export default function HomeHeader(props: HomeHeaderProps) {
           <Clock />
         </Grid>
         <Grid item>
-          <Button variant="contained" color="primary" href="#faq" size="large">
+          <Button
+            variant="contained"
+            color="primary"
+            href="#faq"
+            size="large"
+            className={classes.button}
+          >
             What do these mean?
           </Button>
         </Grid>

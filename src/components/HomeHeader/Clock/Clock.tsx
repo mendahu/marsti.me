@@ -1,7 +1,6 @@
 import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import { useCurrentTime } from "../../../contexts/CurrentTimeContext";
 import classnames from "clsx";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 export type ClockProps = {};
 
@@ -10,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: ["Oxygen Mono", "monospace"].join(","),
   },
   clockPrimary: {
-    fontSize: "4.4rem",
+    fontSize: "3.8rem",
     [theme.breakpoints.up(415)]: {
       fontSize: "6.3rem",
     },
@@ -21,14 +20,22 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: "2.2rem",
     },
   },
-  marginBottom: {
-    marginBottom: "8px",
+  marginLeft: {
+    marginLeft: "5px",
+    [theme.breakpoints.up(415)]: {
+      marginLeft: "12px",
+    },
+  },
+  calendarText: {
+    fontSize: "1.2rem",
+    [theme.breakpoints.up(415)]: {
+      fontSize: "2rem",
+    },
   },
 }));
 
 export default function Clock(props: ClockProps) {
   const classes = useStyles();
-  const isWideScreen = useMediaQuery("(min-width:415px)");
 
   const { getLMST, ls, year } = useCurrentTime();
   const { hour, min, sec } = getLMST();
@@ -36,75 +43,60 @@ export default function Clock(props: ClockProps) {
   const roundedLs = Math.round(ls * 10000) / 10000;
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={9}>
-        <Typography
-          component="span"
-          className={classnames(classes.clock, classes.clockPrimary)}
+    <>
+      <Grid container spacing={2}>
+        <Grid item xs={9}>
+          <Typography
+            component="span"
+            className={classnames(classes.clock, classes.clockPrimary)}
+          >
+            {hour}:{min}
+          </Typography>
+        </Grid>
+        <Grid
+          container
+          item
+          xs={3}
+          direction="column"
+          justifyContent="center"
+          alignItems="flex-end"
         >
-          {hour}:{min}
-        </Typography>
+          <Grid item>
+            <Typography
+              component="span"
+              className={classnames(classes.clock, classes.clockSecondary)}
+            >
+              :{sec}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              component="span"
+              className={classnames(classes.clock, classes.clockSecondary)}
+            >
+              <abbr title="Mean Solar Time">MST</abbr>
+            </Typography>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid
-        container
-        item
-        xs={3}
-        direction="column"
-        justifyContent="center"
-        alignItems="flex-end"
-        className={classes.marginBottom}
-      >
+      <Grid container justifyContent="space-between">
         <Grid item>
           <Typography
             component="span"
-            className={classnames(classes.clock, classes.clockSecondary)}
+            className={classnames(classes.calendarText, classes.marginLeft)}
           >
-            :{sec}
+            <abbr title="Solar Longitude">
+              L<sub>S</sub>
+            </abbr>{" "}
+            {roundedLs}&deg;
           </Typography>
         </Grid>
         <Grid item>
-          <Typography
-            component="span"
-            className={classnames(classes.clock, classes.clockSecondary)}
-          >
-            MST
+          <Typography component="span" className={classes.calendarText}>
+            <abbr title="Mars Year">MY</abbr> {year}
           </Typography>
         </Grid>
       </Grid>
-    </Grid>
-    // <div className={styles.root}>
-    //   <div className={styles.time}>
-    //     <div className={styles.mainContainer}>
-    //       <span className={styles.main}>
-    //         {hour}:{min}
-    //       </span>
-    //     </div>
-    //     <div className={styles.secondaryContainer}>
-    //       <div>
-    //         <span className={styles.secondary}>:{sec}</span>
-    //       </div>
-    //       <div>
-    //         <span className={styles.tertiary}>
-    //           <abbr title="Mean Solar Time">MST</abbr>
-    //         </span>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className={styles.date}>
-    //     <div>
-    //       <span>
-    //         <abbr title="Solar Longitude">
-    //           L<sub>S</sub>
-    //         </abbr>{" "}
-    //         {roundedLs}&deg;
-    //       </span>
-    //     </div>
-    //     <div>
-    //       <span>
-    //         <abbr title="Mars Year">MY</abbr> {year}
-    //       </span>
-    //     </div>
-    //   </div>
-    // </div>
+    </>
   );
 }
