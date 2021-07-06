@@ -3,11 +3,11 @@ import "../styles/globals.css";
 import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 import { useTime } from "../src/hooks/useTime";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import DateFnsUtils from "@date-io/date-fns";
 
 function MyApp({ Component, pageProps }) {
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       primary: {
         light: "#ff7550",
