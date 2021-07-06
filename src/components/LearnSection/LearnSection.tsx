@@ -6,7 +6,6 @@ import {
   Theme,
   Typography,
 } from "@material-ui/core";
-import VerticalMenu from "../VerticalMenu/VerticalMenu";
 import { Ls, MeanSolar, Years } from "./content";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useState } from "react";
@@ -60,6 +59,7 @@ export default function LearnSection(props: LearnSectionProps) {
           <Accordion
             expanded={expanded === faqItem.id}
             onChange={handleChange(faqItem.id)}
+            key={faqItem.id}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}

@@ -5,24 +5,50 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { useTime } from "../src/hooks/useTime";
 import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 
-function MyApp({ Component, pageProps }) {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        light: "#ff7550",
-        main: "#cc4425",
-        dark: "#940600",
-        contrastText: "#ffffff",
-      },
-      secondary: {
-        light: "#696c72",
-        main: "#3e4147",
-        dark: "#181b20",
-        contrastText: "#ffffff",
-      },
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#ff7550",
+      main: "#cc4425",
+      dark: "#940600",
+      contrastText: "#ffffff",
     },
-  });
+    secondary: {
+      light: "#696c72",
+      main: "#3e4147",
+      dark: "#181b20",
+      contrastText: "#ffffff",
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: ["Oswald", "sans-serif"].join(","),
+      color: "#cc4425",
+    },
+    h2: {
+      fontFamily: ["Oswald", "sans-serif"].join(","),
+      color: "#cc4425",
+    },
+    h3: {
+      fontFamily: ["Oswald", "sans-serif"].join(","),
+      color: "#cc4425",
+    },
+    h4: {
+      fontFamily: ["Oswald", "sans-serif"].join(","),
+      color: "#cc4425",
+    },
+    h5: {
+      fontFamily: ["Oswald", "sans-serif"].join(","),
+      color: "#cc4425",
+    },
+    h6: {
+      fontFamily: ["Oswald", "sans-serif"].join(","),
+      color: "#cc4425",
+    },
+  },
+});
 
+function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
