@@ -9,7 +9,7 @@
 }
 
 .inputHeader {
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
 }
 
 .dateSection {
@@ -23,14 +23,14 @@
   font-size: 1.6rem;
 }
 
-.fieldRow {
-  margin-top: 1rem;
+.dateItemContainer {
   display: flex;
   justify-content: space-between;
 }
 
-.slider {
-  width: 100%;
+.seasonText {
+  text-align: center;
+  font-size: 1.6rem;
 }
 
 @media screen and (min-width: 700px) {

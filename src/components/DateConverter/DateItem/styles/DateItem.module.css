@@ -1,0 +1,32 @@
+.container {
+  border-radius: 10px;
+  color: var(--light);
+  background-color: var(--dark);
+  flex-basis: 20%;
+  flex-grow: 1;
+  margin-right: 1rem;
+  text-align: center;
+}
+
+.container:last-child {
+  margin-right: 0;
+}
+
+.container h4 {
+  margin-top: 2rem;
+}
+
+.container p {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 430px) {
+  .container p {
+    font-size: 2rem;
+  }
+
+  .container h4 {
+    font-size: 3rem;
+  }
+}
