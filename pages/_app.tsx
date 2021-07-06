@@ -1,10 +1,9 @@
-import "../styles/reset.css";
-import "../styles/globals.css";
-import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
-import { useTime } from "../src/hooks/useTime";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import DateFnsUtils from "@date-io/date-fns";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { useTime } from "../src/hooks/useTime";
+import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 
 function MyApp({ Component, pageProps }) {
   const theme = createTheme({
@@ -26,6 +25,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <CurrentTimeProvider value={useTime()}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Component {...pageProps} />
