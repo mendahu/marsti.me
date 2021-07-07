@@ -2,15 +2,35 @@ import { useCurrentTime } from "../../contexts/CurrentTimeContext";
 import { useMissionTime } from "../../hooks/useMissionTime";
 import styles from "./styles/MissionCard.module.css";
 import Image from "next/image";
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardActions,
+  CardMedia,
+  Grid,
+  Theme,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
 export type MissionCardProps = {
   name: string;
   lon: number;
+  lat: number;
   missionStart: Date;
   bannerUrl: string;
 };
 
+const useStyles = makeStyles((theme: Theme) => ({
+  clock: {
+    fontFamily: ["Oxygen Mono", "monospace"].join(","),
+    fontSize: "3.2rem",
+  },
+}));
+
 export const MissionCard = (props: MissionCardProps) => {
+  const classes = useStyles();
+
   const { getLMST } = useCurrentTime();
   const { hour, min, sec } = getLMST(props.lon);
   const { sol } = useMissionTime(props.missionStart, props.lon);
@@ -20,34 +40,39 @@ export const MissionCard = (props: MissionCardProps) => {
   };
 
   return (
-    <article className={styles.card}>
-      <div>
-        <Image
-          src={props.bannerUrl}
-          alt={`${props.name} Mission Banner`}
-          width={450}
-          height={150}
-          className={styles.banner}
-        />
-      </div>
-      <div className={styles.textContainer}>
-        <h3>{props.name}</h3>
-        <div className={styles.subheaderContainer}>
-          <span className={styles.subheader}>Sol: {sol}</span>
-          <span className={styles.subheader}>
-            {formatLon(props.lon)}&#176; W
-          </span>
-        </div>
-        <div className={styles.clockContainer}>
-          <span className={styles.clock}>
-            {hour}:{min}:{sec}
-          </span>
-          <span className={styles.clockLegend}>
-            <abbr title="Local Mean Solar Time">LMST</abbr>
-          </span>
-        </div>
-      </div>
-    </article>
+    <Card raised>
+      <CardMedia
+        component="img"
+        image="/zhurong_banner.png"
+        title={props.name}
+        alt={props.name}
+      />
+      <CardContent component="article">
+        <Grid container justifyContent="space-between">
+          <Grid item xs={6}>
+            <Typography component="h2" variant="h4">
+              {props.name}
+            </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography component="h2" variant="h4" align="right" paragraph>
+              Sol: {sol}
+            </Typography>
+          </Grid>
+        </Grid>
+        <Typography className={classes.clock} align="center" paragraph>
+          {hour}:{min}:{sec}
+        </Typography>
+        <Grid container>
+          <Grid item xs={6}>
+            <Typography>Lat: {props.lat}</Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography align="right">Lon: {props.lon}</Typography>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
   );
 };
 

@@ -1,21 +1,36 @@
 import Head from "next/head";
 import HomeHeader from "../src/components/HomeHeader/HomeHeader";
 import MissionCard from "../src/components/MissionCard/MissionCard";
-import { useMissionLon } from "../src/hooks/useMissionLon";
+import { useMissionCoords } from "../src/hooks/useMissionCoords";
 import DateConverter from "../src/components/DateConverter/DateConverter";
 import LearnSection from "../src/components/LearnSection/LearnSection";
-import { Container } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 
 const starts = {
-  zhu: new Date("2021-05-14T23:18:00Z"),
-  igy: new Date("2021-04-03T00:00:00Z"),
-  m20: new Date("2021-02-18T20:55:00Z"),
-  ins: new Date("2018-11-26T19:52:59Z"),
-  msl: new Date("2012-08-06T05:17:57Z"),
+  zhu: {
+    epoch: new Date("2021-05-14T23:18:00Z"),
+    name: "Zhurong",
+  },
+  igy: {
+    epoch: new Date("2021-04-03T00:00:00Z"),
+    name: "Ingenuity",
+  },
+  m20: {
+    epoch: new Date("2021-02-18T20:55:00Z"),
+    name: "Perseverance",
+  },
+  ins: {
+    epoch: new Date("2018-11-26T19:52:59Z"),
+    name: "InSight",
+  },
+  msl: {
+    epoch: new Date("2012-08-06T05:17:57Z"),
+    name: "Curiosity",
+  },
 };
 
 export default function Home() {
-  const lons = useMissionLon();
+  const coords = useMissionCoords();
 
   return (
     <>
@@ -37,14 +52,15 @@ export default function Home() {
       </Head>
       <Container maxWidth="md">
         <HomeHeader />
-        {/* <section className={styles.missionContainer}>
+        <Grid>
           <MissionCard
-            name={"Zhurong"}
-            lon={lons.zhu}
-            missionStart={starts.zhu}
+            name={starts.zhu.name}
+            lat={coords.zhu.lat}
+            lon={coords.zhu.lon}
+            missionStart={starts.zhu.epoch}
             bannerUrl={"/zhurong_banner.png"}
           />
-          <MissionCard
+          {/* <MissionCard
             name={"Ingenuity"}
             lon={lons.igy}
             missionStart={starts.igy}
@@ -67,9 +83,9 @@ export default function Home() {
             lon={lons.msl}
             missionStart={starts.msl}
             bannerUrl={"/msl_banner.png"}
-          />
-        </section>
-        <DateConverter />
+          /> */}
+        </Grid>
+        {/* <DateConverter />
         <LearnSection /> */}
       </Container>
     </>
