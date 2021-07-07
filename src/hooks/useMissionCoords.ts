@@ -23,34 +23,34 @@ export const useMissionCoords = (spacecraft: Spacecraft[]) => {
 
   const [lons, setLons] = useState(defaultState);
 
+  const getCoords = (res) => {
+    const [lonE, lat] = res.features[0].geometry.coordinates;
+    const lonW = 360 - lonE;
+    return [lat, lonW];
+  };
+
+  const errorHandler = (err) => console.error(err);
+
+  // Curiosity Coordinate Fetcher
   useEffect(() => {
     fetch(mslUrl)
+      .then((res) => res.json())
       .then((res) => {
-        return res.json();
+        const [lon, lat] = getCoords(res);
+        setLons((prev) => ({ ...prev, msl: { lat, lon } }));
       })
-      .then((res) => {
-        const [lonE, lat] = res.features[0].geometry.coordinates;
-        const lonW = 360 - lonE;
-        setLons((prev) => ({ ...prev, msl: { lat, lon: lonW } }));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(errorHandler);
   }, []);
 
+  // Perseverance Coordinate Fetcher
   useEffect(() => {
     fetch(m20Url)
+      .then((res) => res.json())
       .then((res) => {
-        return res.json();
+        const [lon, lat] = getCoords(res);
+        setLons((prev) => ({ ...prev, m20: { lat, lon } }));
       })
-      .then((res) => {
-        const [lonE, lat] = res.features[0].geometry.coordinates;
-        const lonW = 360 - lonE;
-        setLons((prev) => ({ ...prev, m20: { lat, lon: lonW } }));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(errorHandler);
   }, []);
 
   return lons;
