@@ -2,7 +2,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  createStyles,
+  Container,
   Theme,
   Typography,
 } from "@material-ui/core";
@@ -29,15 +29,11 @@ const faqData = [
   },
 ];
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    heading: {
-      fontSize: theme.typography.pxToRem(15),
-      flexBasis: "50%",
-      flexShrink: 0,
-    },
-  })
-);
+const useStyles = makeStyles((theme: Theme) => ({
+  marginTop: {
+    marginTop: "2rem",
+  },
+}));
 
 export type LearnSectionProps = {};
 
@@ -51,31 +47,39 @@ export default function LearnSection(props: LearnSectionProps) {
     };
 
   return (
-    <section>
-      <h2 id="faq">Learn about Mars Time</h2>
+    <Container component="section" disableGutters>
+      <Typography
+        id="faq"
+        component="h2"
+        variant="h3"
+        color="primary"
+        className={classes.marginTop}
+      >
+        Learn about Mars Time
+      </Typography>
 
-      {faqData.map((faqItem) => {
-        return (
-          <Accordion
-            expanded={expanded === faqItem.id}
-            onChange={handleChange(faqItem.id)}
-            key={faqItem.id}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls={`${faqItem.id}bh-content`}
-              id={`${faqItem.id}bh-header`}
+      <div className={classes.marginTop}>
+        {faqData.map((faqItem) => {
+          return (
+            <Accordion
+              expanded={expanded === faqItem.id}
+              onChange={handleChange(faqItem.id)}
+              key={faqItem.id}
             >
-              <Typography className={classes.heading}>
-                {faqItem.label}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>{faqItem.text}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        );
-      })}
-    </section>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={`${faqItem.id}bh-content`}
+                id={`${faqItem.id}bh-header`}
+              >
+                <Typography>{faqItem.label}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>{faqItem.text}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          );
+        })}
+      </div>
+    </Container>
   );
 }

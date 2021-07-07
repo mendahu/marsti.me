@@ -51,8 +51,15 @@ export default function Home() {
           );
         })}
       </Grid>
-      <DateConverter />
-      {/*<LearnSection /> */}
+      <Grid
+        container
+        className={classes.grid}
+        justifyContent="center"
+        spacing={3}
+      >
+        <DateConverter />
+      </Grid>
+      <LearnSection />
     </Container>
   );
 }

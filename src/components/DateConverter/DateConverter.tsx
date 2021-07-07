@@ -7,10 +7,9 @@ import { getSeason } from "../../helpers/getSeason";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    marginTop: "2rem",
+    maxWidth: "400px",
   },
   card: {
-    maxWidth: "400px",
     marginTop: "1rem",
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.text.secondary,
@@ -30,14 +29,14 @@ export default function DateConverter(props: DateConverterProps) {
   const mst = marsDate.getMST();
 
   return (
-    <section className={classes.root}>
+    <Grid item xs={12} className={classes.root}>
       <Typography component="h2" variant="h3" color="primary">
         Convert a Date/Time
       </Typography>
 
       <Card className={classes.card} raised>
         <CardContent>
-          <Grid container>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
               <KeyboardDateTimePicker
                 label="Enter Earth date"
@@ -45,33 +44,29 @@ export default function DateConverter(props: DateConverterProps) {
                 onChange={setEarthDate}
               />
             </Grid>
+            <Grid item xs={4}>
+              <Typography variant="body1" paragraph>
+                MY {my}
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="body1" paragraph>
+                LS {ls}
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="body1" paragraph>
+                {mst} MST
+              </Typography>
+            </Grid>
             <Grid item xs={12}>
-              MY {my}
+              <Typography variant="body1">
+                {getSeason(marsDate.getLs())}, Northern Hemisphere
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
       </Card>
-
-      {/* <div className={styles.container}>
-        <div className={styles.dateSection}>
-          <h3 className={styles.inputHeader}>Input Earth Date</h3>
-          <KeyboardDateTimePicker value={earthDate} onChange={setEarthDate} />
-        </div>
-
-        <div className={styles.dateSection}>
-          <h3 className={styles.inputHeader}>Converted Mars Date</h3>
-          <div>
-            <div className={styles.dateItemContainer}>
-              <DateItem title="MY" body={my} />
-              <DateItem title="LS" body={ls} />
-              <DateItem title="MST" body={mst} />
-            </div>
-            <p className={styles.seasonText}>
-              ({getSeason(marsDate.getLs())}, Northern Hemisphere)
-            </p>
-          </div>
-        </div>
-      </div> */}
-    </section>
+    </Grid>
   );
 }
