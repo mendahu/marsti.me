@@ -1,0 +1,52 @@
+[
+  {
+    "id": "zhu",
+    "epoch": "2021-05-14T23:18:00Z",
+    "name": "Zhurong",
+    "banner": "/zhurong_banner.png",
+    "coords": {
+      "lon": 250.074,
+      "lat": 25.066
+    }
+  },
+  {
+    "id": "igy",
+    "epoch": "2021-04-03T00:00:00Z",
+    "name": "Ingenuity",
+    "banner": "/ingenuity_banner.png",
+    "coords": {
+      "lon": 282.5493,
+      "lat": 18.4372
+    }
+  },
+  {
+    "id": "m20",
+    "epoch": "2021-02-18T20:55:00Z",
+    "name": "Perseverance",
+    "banner": "/perseverance_banner.png",
+    "coords": {
+      "lon": 282.5492,
+      "lat": 18.4447
+    }
+  },
+  {
+    "id": "ins",
+    "epoch": "2018-11-26T19:52:59Z",
+    "name": "InSight",
+    "banner": "/insight_banner.png",
+    "coords": {
+      "lon": 224.3766,
+      "lat": 4.5024
+    }
+  },
+  {
+    "id": "msl",
+    "epoch": "2012-08-06T05:17:57Z",
+    "name": "Curiosity",
+    "banner": "/msl_banner.png",
+    "coords": {
+      "lon": 222.5583,
+      "lat": -4.5985
+    }
+  }
+]

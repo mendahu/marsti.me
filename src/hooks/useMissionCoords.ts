@@ -1,33 +1,25 @@
 import { useEffect, useState } from "react";
+import { Spacecraft } from "../../pages";
 
 const mslUrl =
   "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints_current.json";
 const m20Url =
   "https://mars.nasa.gov/mmgis-maps/M20/Layers/json/M20_waypoints_current.json";
 
-export const useMissionCoords = () => {
-  const defaultState = {
-    msl: {
-      lon: 222.5583,
-      lat: 0,
-    },
-    m20: {
-      lon: 282.5492,
-      lat: 0,
-    },
-    ins: {
-      lon: 224.3766,
-      lat: 0,
-    },
-    igy: {
-      lon: 282.55,
-      lat: 0,
-    },
-    zhu: {
-      lon: 250.074,
-      lat: 0,
-    },
-  };
+export const useMissionCoords = (spacecraft: Spacecraft[]) => {
+  const defaultState = {};
+
+  spacecraft.forEach((vehicle) => {
+    const {
+      id,
+      coords: { lat, lon },
+    } = vehicle;
+
+    defaultState[id] = {
+      lat,
+      lon,
+    };
+  });
 
   const [lons, setLons] = useState(defaultState);
 

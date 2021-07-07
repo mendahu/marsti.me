@@ -24,6 +24,13 @@ const theme = createTheme({
       dark: "#181b20",
       contrastText: "#ffffff",
     },
+    text: {
+      secondary: "#eaecef",
+    },
+    background: {
+      paper: "#dadada",
+      default: "#eaecef",
+    },
   },
   typography: {
     h1: oswaldFontFamily,

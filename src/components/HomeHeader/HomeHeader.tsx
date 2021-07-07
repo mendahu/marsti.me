@@ -13,7 +13,7 @@ export type HomeHeaderProps = {};
 
 const useStyles = makeStyles((theme: Theme) => ({
   button: {
-    marginTop: "1rem",
+    marginTop: "1.6rem",
   },
 }));
 
