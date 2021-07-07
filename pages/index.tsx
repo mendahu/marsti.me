@@ -69,8 +69,8 @@ export default function Home() {
             );
           })}
         </Grid>
-        {/* <DateConverter />
-        <LearnSection /> */}
+        <DateConverter />
+        {/*<LearnSection /> */}
       </Container>
     </>
   );

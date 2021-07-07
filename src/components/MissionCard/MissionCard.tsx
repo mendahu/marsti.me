@@ -54,12 +54,18 @@ export const MissionCard = (props: MissionCardProps) => {
         <CardContent component="article">
           <Grid container justifyContent="space-between">
             <Grid item xs={6}>
-              <Typography component="h2" variant="h4">
+              <Typography component="h2" variant="h4" color="primary">
                 {props.name}
               </Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography component="h2" variant="h4" align="right" paragraph>
+              <Typography
+                component="h2"
+                variant="h4"
+                align="right"
+                paragraph
+                color="primary"
+              >
                 Sol: {sol}
               </Typography>
             </Grid>

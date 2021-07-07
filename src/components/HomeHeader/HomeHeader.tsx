@@ -29,6 +29,7 @@ export default function HomeHeader(props: HomeHeaderProps) {
             variant={isWideScreen ? "h1" : "h2"}
             component="h1"
             align="center"
+            color="primary"
           >
             MARSTI.ME
           </Typography>

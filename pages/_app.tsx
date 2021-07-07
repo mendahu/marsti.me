@@ -7,7 +7,6 @@ import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 
 const oswaldFontFamily = {
   fontFamily: ["Oswald", "sans-serif"].join(","),
-  color: "#cc4425",
 };
 
 const theme = createTheme({

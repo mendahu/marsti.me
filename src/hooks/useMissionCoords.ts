@@ -5,6 +5,8 @@ const mslUrl =
   "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints_current.json";
 const m20Url =
   "https://mars.nasa.gov/mmgis-maps/M20/Layers/json/M20_waypoints_current.json";
+const igyUrl =
+  "https://mars.nasa.gov/mmgis-maps/M20/Layers/json/m20_heli_waypoints_current.json";
 
 export const useMissionCoords = (spacecraft: Spacecraft[]) => {
   const defaultState = {};
@@ -36,7 +38,7 @@ export const useMissionCoords = (spacecraft: Spacecraft[]) => {
     fetch(mslUrl)
       .then((res) => res.json())
       .then((res) => {
-        const [lon, lat] = getCoords(res);
+        const [lat, lon] = getCoords(res);
         setLons((prev) => ({ ...prev, msl: { lat, lon } }));
       })
       .catch(errorHandler);
@@ -47,8 +49,19 @@ export const useMissionCoords = (spacecraft: Spacecraft[]) => {
     fetch(m20Url)
       .then((res) => res.json())
       .then((res) => {
-        const [lon, lat] = getCoords(res);
+        const [lat, lon] = getCoords(res);
         setLons((prev) => ({ ...prev, m20: { lat, lon } }));
+      })
+      .catch(errorHandler);
+  }, []);
+
+  // Ingenuity Coordinate Fetcher
+  useEffect(() => {
+    fetch(igyUrl)
+      .then((res) => res.json())
+      .then((res) => {
+        const [lat, lon] = getCoords(res);
+        setLons((prev) => ({ ...prev, igy: { lat, lon } }));
       })
       .catch(errorHandler);
   }, []);

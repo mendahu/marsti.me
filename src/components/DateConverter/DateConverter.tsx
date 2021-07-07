@@ -1,14 +1,27 @@
+import { Card, CardContent, Grid, Theme, Typography } from "@material-ui/core";
 import { KeyboardDateTimePicker } from "@material-ui/pickers";
+import { makeStyles } from "@material-ui/styles";
 import { MarsDate } from "mars-date-utils";
 import { useState } from "react";
 import { getSeason } from "../../helpers/getSeason";
-import DateItem from "./DateItem/DateItem";
 
-import styles from "./styles/DateConverter.module.css";
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    marginTop: "2rem",
+  },
+  card: {
+    maxWidth: "400px",
+    marginTop: "1rem",
+    backgroundColor: theme.palette.secondary.main,
+    color: theme.palette.text.secondary,
+  },
+}));
 
 export type DateConverterProps = {};
 
 export default function DateConverter(props: DateConverterProps) {
+  const classes = useStyles();
+
   const [earthDate, setEarthDate] = useState(new Date());
   const marsDate = new MarsDate(earthDate);
 
@@ -17,10 +30,29 @@ export default function DateConverter(props: DateConverterProps) {
   const mst = marsDate.getMST();
 
   return (
-    <section className={styles.root}>
-      <h2>Convert a Date</h2>
+    <section className={classes.root}>
+      <Typography component="h2" variant="h3" color="primary">
+        Convert a Date/Time
+      </Typography>
 
-      <div className={styles.container}>
+      <Card className={classes.card} raised>
+        <CardContent>
+          <Grid container>
+            <Grid item xs={12}>
+              <KeyboardDateTimePicker
+                label="Enter Earth date"
+                value={earthDate}
+                onChange={setEarthDate}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              MY {my}
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+
+      {/* <div className={styles.container}>
         <div className={styles.dateSection}>
           <h3 className={styles.inputHeader}>Input Earth Date</h3>
           <KeyboardDateTimePicker value={earthDate} onChange={setEarthDate} />
@@ -39,7 +71,7 @@ export default function DateConverter(props: DateConverterProps) {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
