@@ -13,24 +13,15 @@ const oswaldFontFamily = {
 const theme = createTheme({
   palette: {
     primary: {
-      light: "#ff7550",
+      light: "#d66950",
       main: "#cc4425",
-      dark: "#940600",
+      dark: "#8e2f19",
       contrastText: "#ffffff",
-    },
-    secondary: {
-      light: "#696c72",
-      main: "#3e4147",
-      dark: "#181b20",
-      contrastText: "#ffffff",
-    },
-    text: {
-      secondary: "#eaecef",
     },
     background: {
-      paper: "#dadada",
-      default: "#eaecef",
+      paper: "#3e4147",
     },
+    type: "dark",
   },
   typography: {
     h1: oswaldFontFamily,

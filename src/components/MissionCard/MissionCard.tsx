@@ -22,9 +22,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     maxWidth: "400px",
   },
-  card: {
-    backgroundColor: theme.palette.secondary.main,
-  },
   clock: {
     fontFamily: ["Oxygen Mono", "monospace"].join(","),
     fontSize: "3.2rem",

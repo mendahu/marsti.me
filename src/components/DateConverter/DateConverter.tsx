@@ -11,8 +11,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   card: {
     marginTop: "1rem",
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.text.secondary,
   },
 }));
 

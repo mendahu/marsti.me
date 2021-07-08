@@ -4,12 +4,14 @@ import classnames from "clsx";
 
 export type ClockProps = {};
 
+const SIGNIFICANT_DIGITS_LS = 4;
+
 const useStyles = makeStyles((theme: Theme) => ({
   clock: {
     fontFamily: ["Oxygen Mono", "monospace"].join(","),
   },
   clockPrimary: {
-    fontSize: "3.8rem",
+    fontSize: "3.9rem",
     [theme.breakpoints.up(415)]: {
       fontSize: "6.3rem",
     },
@@ -40,7 +42,9 @@ export default function Clock(props: ClockProps) {
   const { getLMST, ls, year } = useCurrentTime();
   const { hour, min, sec } = getLMST();
 
-  const roundedLs = Math.round(ls * 10000) / 10000;
+  const roundedLs =
+    Math.round(ls * Math.pow(10, SIGNIFICANT_DIGITS_LS)) /
+    Math.pow(10, SIGNIFICANT_DIGITS_LS);
 
   return (
     <>
