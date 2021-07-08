@@ -41,7 +41,7 @@ export const MissionCard = (props: MissionCardProps) => {
 
   return (
     <Grid item xs={12} sm={6} className={classes.root}>
-      <Card raised className={classes.card}>
+      <Card raised>
         <CardMedia
           component="img"
           image={props.bannerUrl}

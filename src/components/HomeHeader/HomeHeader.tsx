@@ -37,14 +37,8 @@ export default function HomeHeader(props: HomeHeaderProps) {
         <Grid item>
           <Clock />
         </Grid>
-        <Grid item>
-          <Button
-            variant="contained"
-            color="primary"
-            href="#faq"
-            size="large"
-            className={classes.button}
-          >
+        <Grid item className={classes.button}>
+          <Button variant="contained" color="primary" href="#faq" size="large">
             What do these mean?
           </Button>
         </Grid>
