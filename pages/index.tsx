@@ -41,7 +41,9 @@ export default function Home() {
       <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
         <DateConverter />
       </Grid>
-      <LearnSection />
+      <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
+        <LearnSection />
+      </Grid>
     </Container>
   );
 }

@@ -2,7 +2,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Container,
+  Grid,
   Typography,
 } from "@mui/material";
 import { Ls, MeanSolar, Years } from "./content";
@@ -28,9 +28,7 @@ const faqData = [
   },
 ];
 
-export type LearnSectionProps = {};
-
-export default function LearnSection(props: LearnSectionProps) {
+export default function LearnSection() {
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
@@ -39,18 +37,12 @@ export default function LearnSection(props: LearnSectionProps) {
     };
 
   return (
-    <Container component="section" disableGutters>
-      <Typography
-        id="faq"
-        component="h2"
-        variant="h3"
-        color="primary"
-        mt={"2rem"}
-      >
+    <Grid item xs={12} md={6} maxWidth="400px">
+      <Typography id="faq" component="h2" variant="h3" color="primary">
         Learn about Mars Time
       </Typography>
 
-      <Box mt={"2rem"}>
+      <Box my={"2rem"}>
         {faqData.map((faqItem) => {
           return (
             <Accordion
@@ -70,6 +62,6 @@ export default function LearnSection(props: LearnSectionProps) {
           );
         })}
       </Box>
-    </Container>
+    </Grid>
   );
 }
