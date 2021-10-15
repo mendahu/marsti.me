@@ -5,11 +5,11 @@ import {
   Container,
   Theme,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Ls, MeanSolar, Years } from "./content";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useState } from "react";
-import { makeStyles } from "@material-ui/styles";
+// import { makeStyles } from "@material-ui/styles";
 
 const faqData = [
   {
@@ -29,16 +29,16 @@ const faqData = [
   },
 ];
 
-const useStyles = makeStyles((theme: Theme) => ({
-  marginTop: {
-    marginTop: "2rem",
-  },
-}));
+// const useStyles = makeStyles((theme: Theme) => ({
+//   marginTop: {
+//     marginTop: "2rem",
+//   },
+// }));
 
 export type LearnSectionProps = {};
 
 export default function LearnSection(props: LearnSectionProps) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
@@ -53,12 +53,13 @@ export default function LearnSection(props: LearnSectionProps) {
         component="h2"
         variant="h3"
         color="primary"
-        className={classes.marginTop}
+        // className={classes.marginTop}
       >
         Learn about Mars Time
       </Typography>
 
-      <div className={classes.marginTop}>
+      {/* <div className={classes.marginTop}> */}
+      <div>
         {faqData.map((faqItem) => {
           return (
             <Accordion
@@ -67,7 +68,7 @@ export default function LearnSection(props: LearnSectionProps) {
               key={faqItem.id}
             >
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+                // expandIcon={<ExpandMoreIcon />}
                 aria-controls={`${faqItem.id}bh-content`}
                 id={`${faqItem.id}bh-header`}
               >

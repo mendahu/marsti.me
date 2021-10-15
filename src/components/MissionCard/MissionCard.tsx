@@ -7,8 +7,8 @@ import {
   CardMedia,
   Grid,
   Theme,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+} from "@mui/material";
+// import { makeStyles } from "@material-ui/styles";
 
 export type MissionCardProps = {
   name: string;
@@ -18,18 +18,18 @@ export type MissionCardProps = {
   bannerUrl: string;
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    maxWidth: "400px",
-  },
-  clock: {
-    fontFamily: ["Oxygen Mono", "monospace"].join(","),
-    fontSize: "3.2rem",
-  },
-}));
+// const useStyles = makeStyles((theme: Theme) => ({
+//   root: {
+//     maxWidth: "400px",
+//   },
+//   clock: {
+//     fontFamily: ["Oxygen Mono", "monospace"].join(","),
+//     fontSize: "3.2rem",
+//   },
+// }));
 
 export const MissionCard = (props: MissionCardProps) => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const { getLMST } = useCurrentTime();
   const { hour, min, sec } = getLMST(props.lon);
@@ -40,7 +40,8 @@ export const MissionCard = (props: MissionCardProps) => {
   };
 
   return (
-    <Grid item xs={12} sm={6} className={classes.root}>
+    // <Grid item xs={12} sm={6} className={classes.root}>
+    <Grid item xs={12} sm={6}>
       <Card raised>
         <CardMedia
           component="img"
@@ -68,7 +69,7 @@ export const MissionCard = (props: MissionCardProps) => {
             </Grid>
           </Grid>
           <Typography
-            className={classes.clock}
+            // className={classes.clock}
             align="center"
             paragraph
             color="textSecondary"

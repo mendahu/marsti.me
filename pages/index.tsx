@@ -3,15 +3,15 @@ import MissionCard from "../src/components/MissionCard/MissionCard";
 import { useMissionCoords } from "../src/hooks/useMissionCoords";
 import DateConverter from "../src/components/DateConverter/DateConverter";
 import LearnSection from "../src/components/LearnSection/LearnSection";
-import { Container, Grid, Theme } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { Container, Grid, Theme } from "@mui/material";
+// import { makeStyles } from "@material-ui/styles";
 import spacecraft from "../config/spacecraft.json";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  grid: {
-    marginTop: "2rem",
-  },
-}));
+// const useStyles = makeStyles((theme: Theme) => ({
+//   grid: {
+//     marginTop: "2rem",
+//   },
+// }));
 
 export type Spacecraft = {
   id: string;
@@ -25,7 +25,7 @@ export type Spacecraft = {
 };
 
 export default function Home() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const coords = useMissionCoords(spacecraft as Spacecraft[]);
 
   return (
@@ -35,7 +35,7 @@ export default function Home() {
         container
         spacing={3}
         justifyContent="center"
-        className={classes.grid}
+        // className={classes.grid}
       >
         {spacecraft.map((vehicle) => {
           const { id } = vehicle;
@@ -53,7 +53,7 @@ export default function Home() {
       </Grid>
       <Grid
         container
-        className={classes.grid}
+        // className={classes.grid}
         justifyContent="center"
         spacing={3}
       >
