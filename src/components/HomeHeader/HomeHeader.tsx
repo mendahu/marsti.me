@@ -8,9 +8,28 @@ import {
 } from "@mui/material";
 import { useCurrentTime } from "../../contexts/CurrentTimeContext";
 
-const SIGNIFICANT_DIGITS_LS = 4;
+const SIGNIFICANT_DIGITS_LS: number = 4;
 
-const smallCssValues = {
+type CssValues = {
+  titleSize: string;
+  containerWidth: string;
+  buttonPadding: string;
+  clock1Size: string;
+  clock2Size: string;
+  dateSize: string;
+  secMargin: {
+    top: string;
+    left: string;
+  };
+  mstMargin: {
+    top: string;
+    left: string;
+  };
+  lsMarginLeft: string;
+  yearMarginRight: string;
+};
+
+const smallCssValues: CssValues = {
   titleSize: "4.5rem",
   containerWidth: "288px",
   buttonPadding: "0px",
@@ -29,7 +48,7 @@ const smallCssValues = {
   yearMarginRight: "0px",
 };
 
-const largeCssValues = {
+const largeCssValues: CssValues = {
   titleSize: "6.05rem",
   containerWidth: "388px",
   buttonPadding: "7px",
