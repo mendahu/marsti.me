@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Stack,
-  Grid,
   Typography,
   Container,
   useMediaQuery,
@@ -10,8 +9,6 @@ import {
 import { useCurrentTime } from "../../contexts/CurrentTimeContext";
 
 const SIGNIFICANT_DIGITS_LS = 4;
-
-export type HomeHeaderProps = {};
 
 const smallCssValues = {
   titleSize: "4.5rem",
@@ -126,7 +123,7 @@ function Clock() {
   );
 }
 
-export default function HomeHeader(props: HomeHeaderProps) {
+export default function HomeHeader() {
   const isWideScreen = useMediaQuery("(min-width:420px)");
   const cssValues = isWideScreen ? largeCssValues : smallCssValues;
 
