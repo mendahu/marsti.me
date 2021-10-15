@@ -4,14 +4,7 @@ import { useMissionCoords } from "../src/hooks/useMissionCoords";
 import DateConverter from "../src/components/DateConverter/DateConverter";
 import LearnSection from "../src/components/LearnSection/LearnSection";
 import { Container, Grid, Theme } from "@mui/material";
-// import { makeStyles } from "@material-ui/styles";
 import spacecraft from "../config/spacecraft.json";
-
-// const useStyles = makeStyles((theme: Theme) => ({
-//   grid: {
-//     marginTop: "2rem",
-//   },
-// }));
 
 export type Spacecraft = {
   id: string;
@@ -25,18 +18,12 @@ export type Spacecraft = {
 };
 
 export default function Home() {
-  // const classes = useStyles();
   const coords = useMissionCoords(spacecraft as Spacecraft[]);
 
   return (
     <Container maxWidth="md">
       <HomeHeader />
-      <Grid
-        container
-        spacing={3}
-        justifyContent="center"
-        // className={classes.grid}
-      >
+      <Grid container spacing={3} justifyContent="center" sx={{ mt: 2 }}>
         {spacecraft.map((vehicle) => {
           const { id } = vehicle;
           return (
@@ -51,12 +38,7 @@ export default function Home() {
           );
         })}
       </Grid>
-      <Grid
-        container
-        // className={classes.grid}
-        justifyContent="center"
-        spacing={3}
-      >
+      <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
         <DateConverter />
       </Grid>
       <LearnSection />
