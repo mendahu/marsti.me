@@ -3,42 +3,34 @@ import {
   AccordionDetails,
   AccordionSummary,
   Container,
-  Theme,
   Typography,
 } from "@mui/material";
 import { Ls, MeanSolar, Years } from "./content";
-// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useState } from "react";
-// import { makeStyles } from "@material-ui/styles";
+import { Box } from "@mui/system";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const faqData = [
   {
     id: "panel1",
     label: "Years (MY)",
-    text: <Years />,
+    content: <Years />,
   },
   {
     id: "panel2",
     label: "Solar Longitude (Ls)",
-    text: <Ls />,
+    content: <Ls />,
   },
   {
     id: "panel3",
     label: "Mean Solar Time (MST)",
-    text: <MeanSolar />,
+    content: <MeanSolar />,
   },
 ];
-
-// const useStyles = makeStyles((theme: Theme) => ({
-//   marginTop: {
-//     marginTop: "2rem",
-//   },
-// }));
 
 export type LearnSectionProps = {};
 
 export default function LearnSection(props: LearnSectionProps) {
-  // const classes = useStyles();
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
@@ -53,13 +45,12 @@ export default function LearnSection(props: LearnSectionProps) {
         component="h2"
         variant="h3"
         color="primary"
-        // className={classes.marginTop}
+        mt={"2rem"}
       >
         Learn about Mars Time
       </Typography>
 
-      {/* <div className={classes.marginTop}> */}
-      <div>
+      <Box mt={"2rem"}>
         {faqData.map((faqItem) => {
           return (
             <Accordion
@@ -68,19 +59,17 @@ export default function LearnSection(props: LearnSectionProps) {
               key={faqItem.id}
             >
               <AccordionSummary
-                // expandIcon={<ExpandMoreIcon />}
+                expandIcon={<ExpandMoreIcon />}
                 aria-controls={`${faqItem.id}bh-content`}
                 id={`${faqItem.id}bh-header`}
               >
                 <Typography>{faqItem.label}</Typography>
               </AccordionSummary>
-              <AccordionDetails>
-                <Typography>{faqItem.text}</Typography>
-              </AccordionDetails>
+              <AccordionDetails>{faqItem.content}</AccordionDetails>
             </Accordion>
           );
         })}
-      </div>
+      </Box>
     </Container>
   );
 }
