@@ -3,7 +3,7 @@ import MissionCard from "../src/components/MissionCard/MissionCard";
 import { useMissionCoords } from "../src/hooks/useMissionCoords";
 import DateConverter from "../src/components/DateConverter/DateConverter";
 import LearnSection from "../src/components/LearnSection/LearnSection";
-import { Container, Grid, Theme } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import spacecraft from "../config/spacecraft.json";
 
 export type Spacecraft = {
@@ -28,7 +28,7 @@ export default function Home() {
           const { id } = vehicle;
           return (
             <MissionCard
-              key={vehicle.id}
+              key={id}
               name={vehicle.name}
               lat={coords[id].lat}
               lon={coords[id].lon}
