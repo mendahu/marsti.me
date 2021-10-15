@@ -6,9 +6,8 @@ import {
   Typography,
   CardMedia,
   Grid,
-  Theme,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+  useMediaQuery,
+} from "@mui/material";
 
 export type MissionCardProps = {
   name: string;
@@ -18,19 +17,8 @@ export type MissionCardProps = {
   bannerUrl: string;
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    maxWidth: "400px",
-  },
-  clock: {
-    fontFamily: ["Oxygen Mono", "monospace"].join(","),
-    fontSize: "3.2rem",
-  },
-}));
-
 export const MissionCard = (props: MissionCardProps) => {
-  const classes = useStyles();
-
+  const isWideScreen = useMediaQuery("(min-width:360px)");
   const { getLMST } = useCurrentTime();
   const { hour, min, sec } = getLMST(props.lon);
   const { sol } = useMissionTime(props.missionStart, props.lon);
@@ -39,8 +27,12 @@ export const MissionCard = (props: MissionCardProps) => {
     return Math.abs(Math.round(coord * 10000) / 10000);
   };
 
+  const headerType = isWideScreen ? "h4" : "h5";
+  const clockSize = isWideScreen ? "3.8rem" : "3.3rem";
+  const coordsSize = isWideScreen ? "1.2rem" : "1rem";
+
   return (
-    <Grid item xs={12} sm={6} className={classes.root}>
+    <Grid item xs={12} md={6} maxWidth="400px">
       <Card raised>
         <CardMedia
           component="img"
@@ -51,14 +43,14 @@ export const MissionCard = (props: MissionCardProps) => {
         <CardContent component="article">
           <Grid container justifyContent="space-between">
             <Grid item xs={6}>
-              <Typography component="h2" variant="h4" color="primary">
+              <Typography component="h2" variant={headerType} color="primary">
                 {props.name}
               </Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography
                 component="h2"
-                variant="h4"
+                variant={headerType}
                 align="right"
                 paragraph
                 color="primary"
@@ -68,7 +60,8 @@ export const MissionCard = (props: MissionCardProps) => {
             </Grid>
           </Grid>
           <Typography
-            className={classes.clock}
+            variant="clock"
+            fontSize={clockSize}
             align="center"
             paragraph
             color="textSecondary"
@@ -77,7 +70,12 @@ export const MissionCard = (props: MissionCardProps) => {
           </Typography>
           <Grid container>
             <Grid item xs={6}>
-              <Typography component="p" variant="body1" color="textSecondary">
+              <Typography
+                component="p"
+                variant="body1"
+                fontSize={coordsSize}
+                color="textSecondary"
+              >
                 Lat: {formatCoord(props.lat)}&deg;{props.lat >= 0 ? "N" : "S"}
               </Typography>
             </Grid>
@@ -86,6 +84,7 @@ export const MissionCard = (props: MissionCardProps) => {
                 align="right"
                 component="p"
                 variant="body1"
+                fontSize={coordsSize}
                 color="textSecondary"
               >
                 Lon: {formatCoord(props.lon)}&deg;W

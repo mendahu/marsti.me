@@ -2,43 +2,33 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Container,
-  Theme,
+  Grid,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Ls, MeanSolar, Years } from "./content";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useState } from "react";
-import { makeStyles } from "@material-ui/styles";
+import { Box } from "@mui/system";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const faqData = [
   {
     id: "panel1",
     label: "Years (MY)",
-    text: <Years />,
+    content: <Years />,
   },
   {
     id: "panel2",
     label: "Solar Longitude (Ls)",
-    text: <Ls />,
+    content: <Ls />,
   },
   {
     id: "panel3",
     label: "Mean Solar Time (MST)",
-    text: <MeanSolar />,
+    content: <MeanSolar />,
   },
 ];
 
-const useStyles = makeStyles((theme: Theme) => ({
-  marginTop: {
-    marginTop: "2rem",
-  },
-}));
-
-export type LearnSectionProps = {};
-
-export default function LearnSection(props: LearnSectionProps) {
-  const classes = useStyles();
+export default function LearnSection() {
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
@@ -47,18 +37,12 @@ export default function LearnSection(props: LearnSectionProps) {
     };
 
   return (
-    <Container component="section" disableGutters>
-      <Typography
-        id="faq"
-        component="h2"
-        variant="h3"
-        color="primary"
-        className={classes.marginTop}
-      >
+    <Grid item xs={12} md={6} maxWidth="400px">
+      <Typography id="faq" component="h2" variant="h3" color="primary">
         Learn about Mars Time
       </Typography>
 
-      <div className={classes.marginTop}>
+      <Box my={"2rem"}>
         {faqData.map((faqItem) => {
           return (
             <Accordion
@@ -73,13 +57,11 @@ export default function LearnSection(props: LearnSectionProps) {
               >
                 <Typography>{faqItem.label}</Typography>
               </AccordionSummary>
-              <AccordionDetails>
-                <Typography>{faqItem.text}</Typography>
-              </AccordionDetails>
+              <AccordionDetails>{faqItem.content}</AccordionDetails>
             </Accordion>
           );
         })}
-      </div>
-    </Container>
+      </Box>
+    </Grid>
   );
 }
