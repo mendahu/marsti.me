@@ -1,4 +1,11 @@
-import { Card, CardContent, Grid, TextField, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { MarsDate } from "mars-date-utils";
 import { useState } from "react";
 import { getSeason } from "../../helpers/getSeason";
@@ -13,17 +20,30 @@ export default function DateConverter() {
   const mst = marsDate.getMST();
 
   return (
-    <Grid item xs={12} maxWidth="400px">
+    <Grid item xs={12} md={6} maxWidth="400px">
       <Typography component="h2" variant="h3" color="primary">
         Convert a Date/Time
       </Typography>
 
       <Card raised sx={{ mt: "2rem" }}>
+        <CardMedia
+          component="img"
+          image={"earth-mars.png"}
+          title={"Convert Earth Date to Mars Date"}
+          alt={"Picture of Earth and MArs"}
+        />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid item xs={12} mt="1rem">
               <DateTimePicker
-                renderInput={(props) => <TextField {...props} />}
+                renderInput={(props) => (
+                  <TextField
+                    id="earth-date"
+                    {...props}
+                    fullWidth
+                    helperText="Enter Earth Date to Convert"
+                  />
+                )}
                 label="Earth Date"
                 value={earthDate}
                 onChange={setEarthDate}
