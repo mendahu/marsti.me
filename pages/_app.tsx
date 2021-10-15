@@ -1,5 +1,5 @@
 // import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-// import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 // // import DateFnsUtils from "@date-io/date-fns";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useTime } from "../src/hooks/useTime";
@@ -10,33 +10,29 @@ const oswaldFontFamily = {
   fontFamily: ["Oswald", "sans-serif"].join(","),
 };
 
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       light: "#d66950",
-//       main: "#cc4425",
-//       dark: "#8e2f19",
-//       contrastText: "#ffffff",
-//     },
-//     background: {
-//       paper: "#3e4147",
-//     },
-//     type: "dark",
-//   },
-//   typography: {
-//     h1: oswaldFontFamily,
-//     h2: oswaldFontFamily,
-//     h3: oswaldFontFamily,
-//     h4: oswaldFontFamily,
-//     h5: oswaldFontFamily,
-//     h6: oswaldFontFamily,
-//   },
-// });
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#d66950",
+      main: "#cc4425",
+      dark: "#8e2f19",
+      contrastText: "#ffffff",
+    },
+    mode: "dark",
+  },
+  typography: {
+    h1: oswaldFontFamily,
+    h2: oswaldFontFamily,
+    h3: oswaldFontFamily,
+    h4: oswaldFontFamily,
+    h5: oswaldFontFamily,
+    h6: oswaldFontFamily,
+  },
+});
 
 function MyApp({ Component, pageProps }) {
   return (
-    // <ThemeProvider theme={theme}>
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <CurrentTimeProvider value={useTime()}>
         {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
@@ -60,8 +56,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
         {/* </MuiPickersUtilsProvider> */}
       </CurrentTimeProvider>
-      {/* </ThemeProvider> */}
-    </>
+    </ThemeProvider>
   );
 }
 
