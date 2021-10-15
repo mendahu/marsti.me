@@ -6,8 +6,31 @@ import { useTime } from "../src/hooks/useTime";
 import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 import Head from "next/head";
 
+declare module "@mui/material/styles" {
+  interface TypographyVariants {
+    clock: React.CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    clock?: React.CSSProperties;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    clock: true;
+  }
+}
+
+const oxygenFont = ["Oxygen Mono", "monospace"].join(",");
+const oswaldFont = ["Oswald", "sans-serif"].join(",");
+
 const oswaldFontFamily = {
-  fontFamily: ["Oswald", "sans-serif"].join(","),
+  fontFamily: oswaldFont,
+};
+
+const oxygenFontFamily = {
+  fontFamily: oxygenFont,
 };
 
 const theme = createTheme({
@@ -27,6 +50,7 @@ const theme = createTheme({
     h4: oswaldFontFamily,
     h5: oswaldFontFamily,
     h6: oswaldFontFamily,
+    clock: oxygenFontFamily,
   },
 });
 
