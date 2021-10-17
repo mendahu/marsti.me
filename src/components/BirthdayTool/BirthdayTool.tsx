@@ -8,49 +8,24 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { MarsDate } from "mars-date-utils";
-import React, { useState } from "react";
-import { getSeason } from "../../helpers/getSeason";
 import { DateTimePicker } from "@mui/lab";
 import { Box } from "@mui/system";
-import { format } from "date-fns";
+import useBirthday from "../../hooks/useBirthday";
+import useBirthdayReminder from "../../hooks/useBirthdayReminder";
+import CircularProgress from "@mui/material/CircularProgress";
+import AlertSnackbar from "../AlertSnackbar/AlertSnackbar";
 
 export default function BirthdayTool() {
-  const [earthDate, setEarthDate] = useState<Date>(new Date());
-  const marsDate = new MarsDate(earthDate);
+  const {
+    earthBirthday,
+    setEarthBirthday,
+    birthdayData,
+    ageInYears,
+    nextBirthday,
+  } = useBirthday(new Date());
 
-  const my = marsDate.getCalendarYear().toString();
-  const ls = (Math.round(marsDate.getLs() * 1000) / 1000).toString() + "°";
-  const mst = marsDate.getMST();
-  const ageInYears = Math.round(marsDate.getAgeInYears());
-  const nextBirthday = format(
-    marsDate.getNextAnniversary(),
-    "EEEE, MMMM Lo, yyyy"
-  );
-
-  const [email, setEmail] = useState("");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log("submit!");
-    fetch("/api/birthday", {
-      method: "POST",
-      body: JSON.stringify({ email, earthDate }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  const { email, setEmail, submitReminder, submitting, snackbarProps } =
+    useBirthdayReminder(earthBirthday);
 
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
@@ -84,16 +59,16 @@ export default function BirthdayTool() {
                   />
                 )}
                 label="Earth Birthday"
-                value={earthDate}
-                onChange={setEarthDate}
+                value={earthBirthday}
+                onChange={setEarthBirthday}
               />
             </Box>
             <Box>
               <Typography paragraph>
-                You were born around {mst}{" "}
+                You were born around {birthdayData.time}{" "}
                 <abbr title="Mean Solar Time">MST</abbr> during L<sub>S</sub>{" "}
-                {ls} ({getSeason(marsDate.getLs())} in the Northern Hemisphere)
-                in Mars Year {my}.
+                {birthdayData.ls} ({birthdayData.season} in the Northern
+                Hemisphere) in Mars Year {birthdayData.year}.
               </Typography>
               <Typography>
                 You are {ageInYears} Martian years old. Your next Martian
@@ -102,7 +77,7 @@ export default function BirthdayTool() {
             </Box>
             <Box
               component="form"
-              onSubmit={handleSubmit}
+              onSubmit={submitReminder}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -121,16 +96,25 @@ export default function BirthdayTool() {
                 label="Email Address"
                 helperText="Enter Email Address"
                 value={email}
-                onChange={handleChange}
+                onChange={setEmail}
                 fullWidth
+                type="email"
+                required
               />
-              <Button variant="contained" type="submit">
-                Remind me
+              <Button
+                variant="contained"
+                type="submit"
+                startIcon={
+                  submitting && <CircularProgress color="inherit" size={20} />
+                }
+              >
+                {submitting ? "Submitting..." : "Remind me"}
               </Button>
             </Box>
           </Stack>
         </CardContent>
       </Card>
+      <AlertSnackbar {...snackbarProps} />
     </Grid>
   );
 }
