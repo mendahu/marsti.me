@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
+import auth from "basic-auth";
+import compare from "tsscmp";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // Reject non-POST requests
@@ -8,6 +10,23 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       errorCode: 405,
       errorMessage: `${req.method} request not allowed.`,
     });
+  }
+
+  // Verify Credentials
+  const credentials = auth(req);
+
+  function check(name, pass) {
+    let valid = true;
+
+    // Simple method to prevent short-circut and use timing-safe compare
+    valid = compare(name, process.env.CRON_BASIC_USER) && valid;
+    valid = compare(pass, process.env.CRON_BASIC_PASS) && valid;
+
+    return valid;
+  }
+
+  if (!credentials || !check(credentials.name, credentials.pass)) {
+    return res.status(403).json({ status: 403, message: "Access Denied" });
   }
 
   // Creates Nodemailer transporter service
