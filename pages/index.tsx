@@ -5,6 +5,7 @@ import DateConverter from "../src/components/DateConverter/DateConverter";
 import LearnSection from "../src/components/LearnSection/LearnSection";
 import { Container, Grid } from "@mui/material";
 import spacecraft from "../config/spacecraft.json";
+import BirthdayTool from "../src/components/BirthdayTool/BirthdayTool";
 
 export type Spacecraft = {
   id: string;
@@ -40,6 +41,9 @@ export default function Home() {
       </Grid>
       <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
         <DateConverter />
+      </Grid>
+      <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
+        <BirthdayTool />
       </Grid>
       <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
         <LearnSection />

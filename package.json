@@ -24,7 +24,7 @@
     "@types/nodemailer": "^6.4.4",
     "basic-auth": "^2.0.1",
     "date-fns": "^2.25.0",
-    "mars-date-utils": "^1.1.0",
+    "mars-date-utils": "^1.1.1",
     "next": "11.1.2",
     "nodemailer": "^6.7.0",
     "react": "17.0.2",
