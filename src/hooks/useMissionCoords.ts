@@ -8,8 +8,19 @@ const m20Url =
 const igyUrl =
   "https://mars.nasa.gov/mmgis-maps/M20/Layers/json/m20_heli_waypoints_current.json";
 
+type MissionCoordinates = {
+  lat: string;
+  lon: string;
+};
+
+type MissionsCoordinates = {
+  msl?: MissionCoordinates;
+  m20?: MissionCoordinates;
+  igy?: MissionCoordinates;
+};
+
 export const useMissionCoords = (spacecraft: Spacecraft[]) => {
-  const defaultState = {};
+  const defaultState: MissionsCoordinates = {};
 
   spacecraft.forEach((vehicle) => {
     const {
