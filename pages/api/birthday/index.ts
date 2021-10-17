@@ -1,19 +1,23 @@
 import { MarsDate } from "mars-date-utils";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { generateCronExpression } from "../../../src/helpers/generateCronExpression";
+import querystring from "querystring";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const TOKEN = process.env.EASY_CRON_API_TOKEN;
+  const token = process.env.EASY_CRON_API_TOKEN;
   const CRON_URL = process.env.EASY_CRON_API_URL;
-  const GROUP_ID = process.env.CRON_GROUP_ID;
+  const groupId = process.env.CRON_GROUP_ID;
 
   // Temporary GET catcher to check list
   // REMOVE for PRODUCTION
   if (req.method === "GET") {
+    const query = querystring.stringify({
+      token,
+      group_id: groupId,
+    });
+
     try {
-      const resp = await fetch(
-        `${CRON_URL}/list?token=${TOKEN}&group_id=${GROUP_ID}`
-      );
+      const resp = await fetch(`${CRON_URL}/list?${query}`);
       const data = await resp.json();
       return res.status(200).json({ status: 200, data });
     } catch (err) {
@@ -46,10 +50,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const cronExpression = generateCronExpression(nextMarsBirthday);
   const url = `${process.env.BASEURL}/api/email/`;
 
+  const query = querystring.stringify({
+    token,
+    url,
+    cron_expression: cronExpression,
+    group_id: groupId,
+    timezone_from: 2,
+    timezone: "UTC",
+    cron_job_name: email,
+    http_method: "POST",
+    http_message_body: JSON.stringify({
+      email,
+    }),
+  });
+
   try {
-    const resp = await fetch(
-      `${CRON_URL}/add?token=${TOKEN}&url=${url}&cron_expression=${cronExpression}&group_id=${GROUP_ID}&timezone_from=2&timezone=UTC&cron_job_name=${email}&http_method=POST&http_message_body={"email":"${email}"}`
-    );
+    const resp = await fetch(`${CRON_URL}/add?${query}`);
     const data = await resp.json();
     console.log(data);
     return res
