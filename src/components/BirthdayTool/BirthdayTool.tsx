@@ -100,8 +100,22 @@ export default function BirthdayTool() {
                 birthday is {nextBirthday}.
               </Typography>
             </Box>
-            <Box component="form" onSubmit={handleSubmit}>
-              <Typography>Get an email remainder!</Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+              }}
+            >
+              <Typography
+                paragraph
+                variant="h5"
+                sx={{ alignSelf: "flex-start", mb: "2rem" }}
+              >
+                Get an email remainder!
+              </Typography>
               <TextField
                 variant="outlined"
                 label="Email Address"
