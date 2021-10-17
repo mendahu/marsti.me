@@ -84,6 +84,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const marsDate = new MarsDate(earthBirthday);
   const nextMarsBirthday = marsDate.getNextAnniversary();
 
+  // Set time for next birthday to 6AM local time
+  // This way they wake up to the reminder
+  // Random minute in order to space out reminders for a day
+  const randomMinute = Math.random() * 60;
+  nextMarsBirthday.setHours(6, randomMinute, 0);
+
   // Build options for Cron Job
   const queryOptions: AddCronJobOptions = {
     token,
