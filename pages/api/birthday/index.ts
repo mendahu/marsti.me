@@ -69,7 +69,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const { earthDate, email, discordId } = req.body;
+  const { earthDate, email, discordId } = JSON.parse(req.body);
 
   // Reject requests without body parameter
   if (!earthDate || (!email && !discordId)) {

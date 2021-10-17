@@ -36,6 +36,20 @@ export default function BirthdayTool() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("submit!");
+    fetch("/api/birthday", {
+      method: "POST",
+      body: JSON.stringify({ email, earthDate }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
@@ -96,7 +110,9 @@ export default function BirthdayTool() {
                 onChange={handleChange}
                 fullWidth
               />
-              <Button variant="contained">Remind me</Button>
+              <Button variant="contained" type="submit">
+                Remind me
+              </Button>
             </Box>
           </Stack>
         </CardContent>
