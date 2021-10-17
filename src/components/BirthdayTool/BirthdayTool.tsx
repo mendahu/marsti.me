@@ -22,7 +22,7 @@ export default function BirthdayTool() {
     birthdayData,
     ageInYears,
     nextBirthday,
-  } = useBirthday(new Date());
+  } = useBirthday();
 
   const { email, setEmail, submitReminder, submitting, snackbarProps } =
     useBirthdayReminder(earthBirthday);
@@ -36,9 +36,9 @@ export default function BirthdayTool() {
       <Card raised sx={{ mt: "2rem" }}>
         <CardMedia
           component="img"
-          image={"earth-mars.png"}
-          title={"Convert Earth Date to Mars Date"}
-          alt={"Picture of Earth and MArs"}
+          image={"birthday_banner.png"}
+          title={"Get your Mars Birthday"}
+          alt={"Picture of a Birthday Cake"}
         />
         <CardContent>
           <Stack spacing={3}>
@@ -63,54 +63,58 @@ export default function BirthdayTool() {
                 onChange={setEarthBirthday}
               />
             </Box>
-            <Box>
-              <Typography paragraph>
-                You were born around {birthdayData.time}{" "}
-                <abbr title="Mean Solar Time">MST</abbr> during L<sub>S</sub>{" "}
-                {birthdayData.ls} ({birthdayData.season} in the Northern
-                Hemisphere) in Mars Year {birthdayData.year}.
-              </Typography>
-              <Typography>
-                You are {ageInYears} Martian years old. Your next Martian
-                birthday is {nextBirthday}.
-              </Typography>
-            </Box>
-            <Box
-              component="form"
-              onSubmit={submitReminder}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-end",
-              }}
-            >
-              <Typography
-                paragraph
-                variant="h5"
-                sx={{ alignSelf: "flex-start", mb: "2rem" }}
+            {earthBirthday && (
+              <Box>
+                <Typography paragraph>
+                  You were born around {birthdayData.time}{" "}
+                  <abbr title="Mean Solar Time">MST</abbr> during L<sub>S</sub>{" "}
+                  {birthdayData.ls} ({birthdayData.season} in the Northern
+                  Hemisphere) in Mars Year {birthdayData.year}.
+                </Typography>
+                <Typography>
+                  You are {ageInYears} Martian years old. Your next Martian
+                  birthday is {nextBirthday}.
+                </Typography>
+              </Box>
+            )}
+            {earthBirthday && (
+              <Box
+                component="form"
+                onSubmit={submitReminder}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                }}
               >
-                Get an email remainder!
-              </Typography>
-              <TextField
-                variant="outlined"
-                label="Email Address"
-                helperText="Enter Email Address"
-                value={email}
-                onChange={setEmail}
-                fullWidth
-                type="email"
-                required
-              />
-              <Button
-                variant="contained"
-                type="submit"
-                startIcon={
-                  submitting && <CircularProgress color="inherit" size={20} />
-                }
-              >
-                {submitting ? "Submitting..." : "Remind me"}
-              </Button>
-            </Box>
+                <Typography
+                  paragraph
+                  variant="h5"
+                  sx={{ alignSelf: "flex-start", mb: "2rem" }}
+                >
+                  Get an email remainder!
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  label="Email Address"
+                  helperText="Enter Email Address"
+                  value={email}
+                  onChange={setEmail}
+                  fullWidth
+                  type="email"
+                  required
+                />
+                <Button
+                  variant="contained"
+                  type="submit"
+                  startIcon={
+                    submitting && <CircularProgress color="inherit" size={20} />
+                  }
+                >
+                  {submitting ? "Submitting..." : "Remind me"}
+                </Button>
+              </Box>
+            )}
           </Stack>
         </CardContent>
       </Card>

@@ -6,7 +6,7 @@ const useBirthdayReminder = (earthDate: Date) => {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [snackbar, setSnackbar] = useState({
-    open: true,
+    open: false,
     severity: "success" as AlertColor,
     message: "Success! We'll email you on your birthday!",
   });
