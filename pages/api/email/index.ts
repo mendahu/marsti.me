@@ -48,25 +48,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   });
 
   // Fetch email template variables
-  const { email } = req.body;
+  const { email, templateVars } = req.body;
   const fromEmail = user;
-
-  const templateVars = {
-    earthBirthday: "January 1st, 1990",
-    ls: {
-      value: "blurp",
-      season: "glorp",
-    },
-    my: "11",
-    marsAge: {
-      abs: "12",
-      spoken: "13",
-    },
-    nextMarsBirthday: {
-      date: "14",
-      age: "15",
-    },
-  };
 
   // Fetch Email Template
   const fetchHTMLTemplate = new Promise((resolve, reject) => {
@@ -74,7 +57,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       if (err) {
         reject(err);
       } else {
-        const injectedTemplate = tsp(template, templateVars);
+        const injectedTemplate = tsp(template, JSON.parse(templateVars));
         resolve(injectedTemplate);
       }
     });

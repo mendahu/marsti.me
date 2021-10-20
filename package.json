@@ -27,6 +27,7 @@
     "mars-date-utils": "^1.1.1",
     "next": "11.1.2",
     "nodemailer": "^6.7.0",
+    "ordinal": "^1.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "templatestringparser": "^1.1.0",

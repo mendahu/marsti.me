@@ -1,7 +1,10 @@
 import { MarsDate } from "mars-date-utils";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { generateCronExpression } from "../../../src/helpers/generateCronExpression";
-import querystring from "querystring";
+import { add, format } from "date-fns";
+import { getSeason } from "../../../src/helpers/getSeason";
+import ordinal from "ordinal";
+import { formatLs } from "../../../src/helpers/formatLs";
 
 type WebHookCronDataOption =
   | "CRON_JOB_ID"
@@ -47,13 +50,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Temporary GET catcher to check list
   // REMOVE for PRODUCTION
   if (req.method === "GET") {
-    const query = querystring.stringify({
+    const query = new URLSearchParams({
       token,
       group_id: groupId,
     });
 
     try {
-      const resp = await fetch(`${CRON_URL}/list?${query}`);
+      const resp = await fetch(`${CRON_URL}/list?${query.toString}`);
       const data = await resp.json();
       return res.status(200).json({ status: 200, data });
     } catch (err) {
@@ -69,7 +72,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const { earthDate, email, discordId } = JSON.parse(req.body);
+  const { earthDate, email, discordId } = req.body;
 
   // Reject requests without body parameter
   if (!earthDate || (!email && !discordId)) {
@@ -104,6 +107,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     auth_pw: process.env.CRON_BASIC_PASS,
   };
 
+  // Generate Email Template Data
+  const ls = marsDate.getLs();
+  const formattedLs = formatLs(ls);
+  const nextNextMarsBirthday = new MarsDate(
+    add(earthBirthday, { days: 2 })
+  ).getNextAnniversary();
+  const currentAge = Math.round(marsDate.getAgeInYears());
+
+  const templateVars = {
+    earthBirthday: format(earthBirthday, "MMMM do, yyyy"),
+    ls: {
+      value: formattedLs,
+      season: getSeason(ls),
+    },
+    my: marsDate.getCalendarYear(),
+    marsAge: {
+      abs: currentAge,
+      spoken: ordinal(currentAge),
+    },
+    nextMarsBirthday: {
+      date: format(nextNextMarsBirthday, "MMMM do, yyyy"),
+      age: currentAge + 1,
+    },
+  };
+
   let emailSuccess: boolean | null = null;
   let discordSuccess: boolean | null = null;
 
@@ -115,12 +143,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     queryOptions.cron_job_name = email;
     queryOptions.http_message_body = JSON.stringify({
       email,
+      templateVars,
     });
 
-    const query = querystring.stringify(queryOptions);
+    const query = new URLSearchParams(queryOptions);
 
     try {
-      const resp = await fetch(`${CRON_URL}/add?${query}`);
+      const resp = await fetch(`${CRON_URL}/add?${query.toString()}`);
       const data = await resp.json();
       emailSuccess = true;
       console.log(data);
@@ -135,12 +164,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     queryOptions.cron_job_name = discordId;
     queryOptions.http_message_body = JSON.stringify({
       discordId,
+      templateVars,
     });
 
-    const query = querystring.stringify(queryOptions);
+    const query = new URLSearchParams(queryOptions);
 
     try {
-      const resp = await fetch(`${CRON_URL}/add?${query}`);
+      const resp = await fetch(`${CRON_URL}/add?${query.toString()}`);
       const data = await resp.json();
       discordSuccess = true;
       console.log(data);
