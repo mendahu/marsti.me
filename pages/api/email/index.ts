@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import auth from "basic-auth";
 import compare from "tsscmp";
+import fs from "fs";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // Reject non-POST requests
@@ -45,17 +46,34 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     },
   });
 
+  // Fetch Email Template
+  const template = new Promise((resolve, reject) => {
+    const html = fs.readFile(
+      "assets/birthday-email.html",
+      "utf8",
+      (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      }
+    );
+  });
+
   // Send Email
   const { email } = req.body;
   const fromEmail = user;
 
-  return transporter
-    .sendMail({
-      from: `Marsti.me <${fromEmail}>`,
-      to: email,
-      subject: "It's your Martian Birthday!",
-      text: "It is your birthday.",
-      html: "<u>It is your birthday</u>",
+  return template
+    .then((html) => {
+      return transporter.sendMail({
+        from: `Marsti.me <${fromEmail}>`,
+        to: email,
+        subject: "It's your Martian Birthday!",
+        text: "It is your birthday.",
+        html,
+      });
     })
     .then(() => {
       res.status(200).json({ status: 200, message: "Email sent." });
