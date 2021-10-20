@@ -29,6 +29,7 @@
     "nodemailer": "^6.7.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "templatestringparser": "^1.1.0",
     "tsscmp": "^1.0.6"
   },
   "devDependencies": {
