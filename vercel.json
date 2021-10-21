@@ -1,7 +1,7 @@
 {
   "functions": {
     "pages/api/emails/new.[jt]s": {
-      "includeFiles": "_files/**"
+      "includeFiles": "../../../templates/*.html"
     }
   }
 }
