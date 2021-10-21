@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import auth from "basic-auth";
-import compare from "tsscmp";
 import fs from "fs";
 import tsp from "templatestringparser";
+import checkCredentials from "../../../src/helpers/checkCredentials";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // Reject non-POST requests
@@ -17,17 +17,11 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   // Verify Credentials
   const credentials = auth(req);
 
-  function check(name, pass) {
-    let valid = true;
-
-    // Simple method to prevent short-circut and use timing-safe compare
-    valid = compare(name, process.env.CRON_BASIC_USER) && valid;
-    valid = compare(pass, process.env.CRON_BASIC_PASS) && valid;
-
-    return valid;
-  }
-
-  if (!credentials || !check(credentials.name, credentials.pass)) {
+  if (
+    !credentials.name ||
+    !credentials.pass ||
+    !checkCredentials(credentials.name, credentials.pass)
+  ) {
     return res.status(403).json({ status: 403, message: "Access Denied" });
   }
 
@@ -51,27 +45,28 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   const { email, templateVars } = req.body;
   const fromEmail = user;
 
-  // Fetch Email Template
+  // Fetch Email Template and hydrate with template variables
   const fetchHTMLTemplate = new Promise((resolve, reject) => {
     fs.readFile("assets/birthday-email.html", "utf8", (err, template) => {
       if (err) {
         reject(err);
       } else {
-        const injectedTemplate = tsp(template, JSON.parse(templateVars));
-        resolve(injectedTemplate);
+        resolve(template);
       }
     });
   });
 
-  // Send Email
+  // Hydrate Template and Send Email
   return fetchHTMLTemplate
-    .then((html) => {
+    .then((template) => {
+      const injectedTemplate = tsp(template, JSON.parse(templateVars));
+
       return transporter.sendMail({
         from: `Marsti.me <${fromEmail}>`,
         to: email,
         subject: "It's your Martian Birthday!",
         text: "It is your birthday.",
-        html,
+        html: injectedTemplate,
       });
     })
     .then(() => {
