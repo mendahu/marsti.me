@@ -38,23 +38,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const CRON_URL = process.env.EASY_CRON_API_URL;
   const groupId = process.env.CRON_GROUP_ID;
 
-  // Temporary GET catcher to check list
-  // REMOVE for PRODUCTION
-  if (req.method === "GET") {
-    const query = new URLSearchParams({
-      token,
-      group_id: groupId,
-    });
-
-    try {
-      const resp = await fetch(`${CRON_URL}/list?${query.toString}`);
-      const data = await resp.json();
-      return res.status(200).json({ status: 200, data });
-    } catch (err) {
-      return res.status(500).json({ error: 500, err });
-    }
-  }
-
   // Reject non-POST requests
   if (req.method !== "POST") {
     return res.status(405).json({
