@@ -6,14 +6,6 @@ import { getSeason } from "../../../src/helpers/getSeason";
 import ordinal from "ordinal";
 import { formatLs } from "../../../src/helpers/formatLs";
 
-type WebHookCronDataOption =
-  | "CRON_JOB_ID"
-  | "CRON_JOB_NAME"
-  | "CRON_JOB_URL"
-  | "CRON_JOB_HTTP_STATUS_CODE"
-  | "CRON_JOB_EXECUTION_STATUS"
-  | "CRON_JOB_EXECUTION_ERROR";
-
 type AddCronJobOptions = {
   token: string;
   url: string;
@@ -39,7 +31,6 @@ type AddCronJobOptions = {
   slack_url?: string;
   wh?: "0" | "1" | "2";
   wh_http_method?: string;
-  "wh_data[]"?: Array<WebHookCronDataOption>;
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
