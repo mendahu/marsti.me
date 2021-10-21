@@ -1,10 +1,10 @@
 import { MarsDate } from "mars-date-utils";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { generateCronExpression } from "../../../../src/helpers/generateCronExpression";
+import { generateCronExpression } from "../../../src/helpers/generateCronExpression";
 import { add, format } from "date-fns";
-import { getSeason } from "../../../../src/helpers/getSeason";
+import { getSeason } from "../../../src/helpers/getSeason";
 import ordinal from "ordinal";
-import { formatLs } from "../../../../src/helpers/formatLs";
+import { formatLs } from "../../../src/helpers/formatLs";
 
 type AddCronJobOptions = {
   token: string;
