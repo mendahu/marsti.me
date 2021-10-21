@@ -19,7 +19,7 @@ const useBirthdayReminder = (earthDate: Date) => {
     setSubmitting(true);
     event.preventDefault();
     console.log("submit!");
-    fetch("/api/birthday", {
+    fetch("/api/reminders/new", {
       method: "POST",
       body: JSON.stringify({ email, earthDate }),
     })

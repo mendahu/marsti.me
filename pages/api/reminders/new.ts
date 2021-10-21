@@ -70,7 +70,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Build options for Cron Job
   const queryOptions: AddCronJobOptions = {
     token,
-    url: `${process.env.BASEURL}/api/email/`,
+    url: `${process.env.BASEURL}/api/emails/new`,
     cron_expression: generateCronExpression(nextMarsBirthday),
     group_id: groupId,
     timezone_from: "2",
