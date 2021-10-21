@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/emails/new/": {
+    "api/emails/new/index.js": {
       "includeFiles": "templates/**"
     }
   }
