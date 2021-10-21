@@ -46,14 +46,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const { earthDate, email, discordId } = req.body;
+  const { earthDate, email, discordId, offset } = req.body;
 
   // Reject requests without body parameter
-  console.log(req.body);
-  console.log(req.body.earthDate, req.body.email, req.body.discordId);
-  console.log(earthDate, email, discordId);
-
-  if (!earthDate || (!email && !discordId)) {
+  if (!earthDate || !offset || (!email && !discordId)) {
     return res.status(400).json({
       errorCode: 400,
       errorMessage: `Missing body content.`,
@@ -64,12 +60,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const earthBirthday = new Date(earthDate);
   const marsDate = new MarsDate(earthBirthday);
   const nextMarsBirthday = marsDate.getNextAnniversary();
-
-  // Set time for next birthday to 6AM local time
-  // This way they wake up to the reminder
-  // Random minute in order to space out reminders for a day
-  const randomMinute = Math.random() * 60;
-  nextMarsBirthday.setHours(6, randomMinute, 0);
 
   // Build options for Cron Job
   const queryOptions: AddCronJobOptions = {
@@ -129,8 +119,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const resp = await fetch(`${CRON_URL}/add?${query.toString()}`);
       const data = await resp.json();
+      if (data.status === "error") {
+        throw data;
+      }
       emailSuccess = true;
-      console.log(data);
     } catch (err) {
       emailSuccess = false;
       console.error(err);

@@ -24,6 +24,7 @@ const useBirthdayReminder = (earthDate: Date) => {
       body: JSON.stringify({
         email,
         earthDate: earthDate,
+        offset: earthDate.getTimezoneOffset(),
       }),
       headers: {
         "Content-Type": "application/json",
