@@ -16,12 +16,16 @@ const useBirthdayReminder = (earthDate: Date) => {
   };
 
   const submitReminder = (event: React.FormEvent<HTMLFormElement>) => {
+    const body = new FormData();
+    body.append("email", email);
+    body.append("earthDate", earthDate.toString());
+
     setSubmitting(true);
     event.preventDefault();
     console.log("submit!");
     fetch("/api/reminders/new", {
       method: "POST",
-      body: JSON.stringify({ email, earthDate }),
+      body,
     })
       .then((res) => {
         if (res.status !== 200) {
