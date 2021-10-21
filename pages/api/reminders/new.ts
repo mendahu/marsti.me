@@ -49,6 +49,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { earthDate, email, discordId } = req.body;
 
   // Reject requests without body parameter
+  console.log(email, discordId);
   if (!earthDate || (!email && !discordId)) {
     return res.status(400).json({
       errorCode: 400,
