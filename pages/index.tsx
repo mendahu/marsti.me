@@ -5,6 +5,7 @@ import DateConverter from "../src/components/DateConverter/DateConverter";
 import LearnSection from "../src/components/LearnSection/LearnSection";
 import { Container, Grid } from "@mui/material";
 import spacecraft from "../config/spacecraft.json";
+import BirthdayTool from "../src/components/BirthdayTool/BirthdayTool";
 
 export type Spacecraft = {
   id: string;
@@ -17,33 +18,48 @@ export type Spacecraft = {
   };
 };
 
-export default function Home() {
+type HomeGridContainerProps = {
+  child: React.ReactNode;
+};
+
+function HomeGridContainer(props: HomeGridContainerProps) {
+  return (
+    <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
+      {props.child}
+    </Grid>
+  );
+}
+
+function MissionCards() {
   const coords = useMissionCoords(spacecraft as Spacecraft[]);
 
   return (
+    <>
+      {spacecraft.map((vehicle) => {
+        const { id } = vehicle;
+        return (
+          <MissionCard
+            key={id}
+            name={vehicle.name}
+            lat={coords[id].lat}
+            lon={coords[id].lon}
+            missionStart={new Date(vehicle.epoch)}
+            bannerUrl={vehicle.banner}
+          />
+        );
+      })}
+    </>
+  );
+}
+
+export default function Home() {
+  return (
     <Container maxWidth="md">
       <HomeHeader />
-      <Grid container spacing={3} justifyContent="center" sx={{ mt: 2 }}>
-        {spacecraft.map((vehicle) => {
-          const { id } = vehicle;
-          return (
-            <MissionCard
-              key={id}
-              name={vehicle.name}
-              lat={coords[id].lat}
-              lon={coords[id].lon}
-              missionStart={new Date(vehicle.epoch)}
-              bannerUrl={vehicle.banner}
-            />
-          );
-        })}
-      </Grid>
-      <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
-        <DateConverter />
-      </Grid>
-      <Grid container sx={{ mt: 2 }} justifyContent="center" spacing={3}>
-        <LearnSection />
-      </Grid>
+      <HomeGridContainer child={<MissionCards />} />
+      <HomeGridContainer child={<DateConverter />} />
+      <HomeGridContainer child={<BirthdayTool />} />
+      <HomeGridContainer child={<LearnSection />} />
     </Container>
   );
 }
