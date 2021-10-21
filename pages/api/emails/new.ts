@@ -47,7 +47,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   // Fetch Email Template and hydrate with template variables
   const fetchHTMLTemplate = new Promise((resolve, reject) => {
-    fs.readFile("assets/birthday-email.html", "utf8", (err, template) => {
+    fs.readFile("public/birthday-email.html", "utf8", (err, template) => {
       if (err) {
         reject(err);
       } else {
