@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/emails/new.ts": {
+    "api/emails/*.[jt]s": {
       "includeFiles": "_files/**"
     }
   }
