@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/emails/new.js": {
+      "includeFiles": "templates/**"
+    }
+  }
+}
