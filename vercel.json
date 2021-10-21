@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/emails/*.[jt]s": {
+    "pages/api/emails/new.[jt]s": {
       "includeFiles": "_files/**"
     }
   }
