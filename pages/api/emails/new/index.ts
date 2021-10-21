@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 import auth from "basic-auth";
 import fs from "fs";
 import tsp from "templatestringparser";
-import checkCredentials from "../../../src/helpers/checkCredentials";
+import checkCredentials from "../../../../src/helpers/checkCredentials";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // Reject non-POST requests
