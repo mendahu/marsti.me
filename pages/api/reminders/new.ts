@@ -150,8 +150,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const resp = await fetch(`${CRON_URL}/add?${query.toString()}`);
       const data = await resp.json();
+      if (data.status === "error") {
+        throw data;
+      }
       discordSuccess = true;
-      console.log(data);
     } catch (err) {
       discordSuccess = false;
       console.error(err);
