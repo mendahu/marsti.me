@@ -23,7 +23,7 @@ const useBirthdayReminder = (earthDate: Date) => {
       method: "POST",
       body: JSON.stringify({
         email,
-        earthDate: earthDate.toString(),
+        earthDate: earthDate,
       }),
       headers: {
         "Content-Type": "application/json",
