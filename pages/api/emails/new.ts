@@ -48,13 +48,17 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   // Fetch Email Template and hydrate with template variables
   const fetchHTMLTemplate = new Promise((resolve, reject) => {
-    fs.readFile("templates/birthday-email.html", "utf8", (err, template) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(template);
+    fs.readFile(
+      join(__dirname, "templates/birthday-email.html"),
+      "utf8",
+      (err, template) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(template);
+        }
       }
-    });
+    );
   });
 
   // Hydrate Template and Send Email
