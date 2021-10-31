@@ -59,7 +59,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   // Hydrate Template and Send Email
   return fetchHTMLTemplate
     .then((template) => {
-      console.log(template);
       const injectedTemplate = tsp(template, templateVars);
 
       return transporter.sendMail({
