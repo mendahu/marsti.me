@@ -1,4 +1,3 @@
-import styles from "./styles/Acknowledgements.module.css";
 import { Grid, Link, Typography } from "@mui/material";
 
 export type AcknowledgementsProps = {};
