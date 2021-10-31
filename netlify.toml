@@ -1,0 +1,2 @@
+[functions."next_api_emails_new"]
+  included_files = ["templates/**.html"]

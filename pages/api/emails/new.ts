@@ -4,7 +4,6 @@ import auth from "basic-auth";
 import fs from "fs";
 import tsp from "templatestringparser";
 import checkCredentials from "../../../src/helpers/checkCredentials";
-const { join } = require("path");
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // Reject non-POST requests
@@ -48,17 +47,13 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   // Fetch Email Template and hydrate with template variables
   const fetchHTMLTemplate = new Promise((resolve, reject) => {
-    fs.readFile(
-      join(__dirname, "templates/birthday-email.html"),
-      "utf8",
-      (err, template) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(template);
-        }
+    fs.readFile("templates/birthday-email.html", "utf8", (err, template) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(template);
       }
-    );
+    });
   });
 
   // Hydrate Template and Send Email
