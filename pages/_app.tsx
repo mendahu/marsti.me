@@ -5,6 +5,7 @@ import DateAdapter from "@mui/lab/AdapterDateFns";
 import { useTime } from "../src/hooks/useTime";
 import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 import Head from "next/head";
+import SocialHeader from "../src/components/SocialHeader/SocialHeader";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -105,6 +106,7 @@ function MyApp({ Component, pageProps }) {
             />
             <meta name="msapplication-TileColor" content="#121212" />
             <meta name="theme-color" content="#ffffff" />
+            <SocialHeader />
           </Head>
           <Component {...pageProps} />
         </CurrentTimeProvider>
