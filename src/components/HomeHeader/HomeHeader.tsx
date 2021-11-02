@@ -119,7 +119,7 @@ function Clock() {
           variant="clock"
           fontSize={cssValues.clock2Size}
         >
-          <abbr title="Mean Solar Time">MST</abbr>
+          <abbr title="Mars Coordinated Time">MTC</abbr>
         </Typography>
       </Box>
       <Box sx={{ gridArea: "ls" }} ml={cssValues.lsMarginLeft}>

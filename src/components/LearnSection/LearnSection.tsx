@@ -36,15 +36,15 @@ const faqData = [
     content: <Sols />,
   },
   {
-    label: "Hours, minutes and seconds",
+    label: "Tracking Time",
     content: <Time />,
   },
   {
-    label: "Mean Solar Time (MST)",
+    label: "Mean vs True Solar Time",
     content: <MeanSolar />,
   },
   {
-    label: "Timezones",
+    label: "Timezones and Local Time",
     content: <Timezones />,
   },
 ];
