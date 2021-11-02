@@ -5,5 +5,6 @@ import MonthsAndWeeks from "./MonthsAndWeeks";
 import Sols from "./Sols";
 import Time from "./Time";
 import Timezones from "./Timezones";
+import Reading from "./Reading";
 
-export { Years, Ls, MeanSolar, MonthsAndWeeks, Sols, Time, Timezones };
+export { Years, Ls, MeanSolar, MonthsAndWeeks, Sols, Time, Timezones, Reading };

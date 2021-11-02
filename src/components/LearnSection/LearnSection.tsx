@@ -13,6 +13,7 @@ import {
   Sols,
   Time,
   Timezones,
+  Reading,
 } from "./content";
 import { useState } from "react";
 import { Box } from "@mui/system";
@@ -46,6 +47,10 @@ const faqData = [
   {
     label: "Timezones and Local Time",
     content: <Timezones />,
+  },
+  {
+    label: "Further reading",
+    content: <Reading />,
   },
 ];
 
