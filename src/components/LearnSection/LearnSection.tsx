@@ -5,26 +5,52 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { Ls, MeanSolar, Years } from "./content";
+import {
+  Ls,
+  MeanSolar,
+  Years,
+  MonthsAndWeeks,
+  Sols,
+  Time,
+  Timezones,
+  Reading,
+} from "./content";
 import { useState } from "react";
 import { Box } from "@mui/system";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const faqData = [
   {
-    id: "panel1",
     label: "Years (MY)",
     content: <Years />,
   },
   {
-    id: "panel2",
+    label: "Months and Weeks",
+    content: <MonthsAndWeeks />,
+  },
+  {
     label: "Solar Longitude (Ls)",
     content: <Ls />,
   },
   {
-    id: "panel3",
-    label: "Mean Solar Time (MST)",
+    label: "Sols: the Martian Day",
+    content: <Sols />,
+  },
+  {
+    label: "Tracking Time",
+    content: <Time />,
+  },
+  {
+    label: "Mean vs True Solar Time",
     content: <MeanSolar />,
+  },
+  {
+    label: "Timezones and Local Time",
+    content: <Timezones />,
+  },
+  {
+    label: "Further reading",
+    content: <Reading />,
   },
 ];
 
@@ -43,17 +69,18 @@ export default function LearnSection() {
       </Typography>
 
       <Box my={"2rem"}>
-        {faqData.map((faqItem) => {
+        {faqData.map((faqItem, index) => {
+          const id = `panel${index + 1}`;
           return (
             <Accordion
-              expanded={expanded === faqItem.id}
-              onChange={handleChange(faqItem.id)}
-              key={faqItem.id}
+              expanded={expanded === id}
+              onChange={handleChange(id)}
+              key={id}
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                aria-controls={`${faqItem.id}bh-content`}
-                id={`${faqItem.id}bh-header`}
+                aria-controls={`${id}bh-content`}
+                id={`${id}bh-header`}
               >
                 <Typography>{faqItem.label}</Typography>
               </AccordionSummary>
