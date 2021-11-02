@@ -14,15 +14,34 @@ import useBirthday from "../../hooks/useBirthday";
 import useBirthdayReminder from "../../hooks/useBirthdayReminder";
 import CircularProgress from "@mui/material/CircularProgress";
 import AlertSnackbar from "../AlertSnackbar/AlertSnackbar";
+import { useRouter } from "next/router";
 
 export default function BirthdayTool() {
+  const router = useRouter();
+  const {
+    query: { date },
+  } = router;
+
+  function isValidDate(d: Date) {
+    return d instanceof Date && !isNaN(d.getTime());
+  }
+
+  function isInThePast(d: Date) {
+    const now = new Date();
+    return d < now;
+  }
+
+  const dateObject = new Date(date as string);
+  const incomingBirthday =
+    isValidDate(dateObject) && isInThePast(dateObject) && dateObject;
+
   const {
     earthBirthday,
     setEarthBirthday,
     birthdayData,
     ageInYears,
     nextBirthday,
-  } = useBirthday();
+  } = useBirthday(incomingBirthday || null);
 
   const { email, setEmail, submitReminder, submitting, snackbarProps } =
     useBirthdayReminder(earthBirthday);
