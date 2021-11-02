@@ -73,7 +73,7 @@ export default function DateConverter() {
               color="textSecondary"
               align="center"
             >
-              {mst} <abbr title="Mean Solar Time">MST</abbr>
+              {mst} <abbr title="Mars Coordinated Time">MTC</abbr>
             </Typography>
             <Typography
               align="center"
