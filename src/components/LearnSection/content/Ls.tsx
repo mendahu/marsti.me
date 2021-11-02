@@ -28,7 +28,7 @@ export default function Ls(props: LsProps) {
         Here are some L<sub>s</sub> numbers and their cooresponding seasons.
       </Typography>
 
-      <Table sx={{ maxWidth: 300 }}>
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell>
