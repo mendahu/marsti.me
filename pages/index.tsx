@@ -7,6 +7,7 @@ import { Container, Grid } from "@mui/material";
 import spacecraft from "../config/spacecraft.json";
 import BirthdayTool from "../src/components/BirthdayTool/BirthdayTool";
 import Acknowledgements from "../src/components/Acknowledgements/Acknowledgements";
+import RelatedContent from "../src/components/RelatedContent/RelatedContent";
 
 export type Spacecraft = {
   id: string;
@@ -61,6 +62,7 @@ export default function Home() {
       <HomeGridContainer child={<DateConverter />} />
       <HomeGridContainer child={<BirthdayTool />} />
       <HomeGridContainer child={<LearnSection />} />
+      <HomeGridContainer child={<RelatedContent />} />
       <HomeGridContainer child={<Acknowledgements />} />
     </Container>
   );

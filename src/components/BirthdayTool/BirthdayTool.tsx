@@ -67,9 +67,9 @@ export default function BirthdayTool() {
               <Box>
                 <Typography paragraph>
                   You were born around {birthdayData.time}{" "}
-                  <abbr title="Mean Solar Time">MST</abbr> during L<sub>S</sub>{" "}
-                  {birthdayData.ls} ({birthdayData.season} in the Northern
-                  Hemisphere) in Mars Year {birthdayData.year}.
+                  <abbr title="Mars Coordinated Time">MTC</abbr> during L
+                  <sub>S</sub> {birthdayData.ls} ({birthdayData.season} in the
+                  Northern Hemisphere) in Mars Year {birthdayData.year}.
                 </Typography>
                 <Typography>
                   You are {ageInYears} Martian years old. Your next Martian

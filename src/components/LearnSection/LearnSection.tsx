@@ -68,7 +68,7 @@ export default function LearnSection() {
         Learn about Mars Time
       </Typography>
 
-      <Box my={"2rem"}>
+      <Box mt={"2rem"}>
         {faqData.map((faqItem, index) => {
           const id = `panel${index + 1}`;
           return (
