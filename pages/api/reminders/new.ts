@@ -84,6 +84,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const currentAge = Math.round(marsDate.getAgeInYears());
 
   const templateVars = {
+    email,
     earthBirthday: format(earthBirthday, "MMMM do, yyyy"),
     earthDateString: earthBirthday,
     ls: {

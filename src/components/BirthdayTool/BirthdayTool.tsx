@@ -15,12 +15,10 @@ import useBirthdayReminder from "../../hooks/useBirthdayReminder";
 import CircularProgress from "@mui/material/CircularProgress";
 import AlertSnackbar from "../AlertSnackbar/AlertSnackbar";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function BirthdayTool() {
   const router = useRouter();
-  const {
-    query: { date },
-  } = router;
 
   function isValidDate(d: Date) {
     return d instanceof Date && !isNaN(d.getTime());
@@ -31,20 +29,38 @@ export default function BirthdayTool() {
     return d < now;
   }
 
-  const dateObject = new Date(date as string);
-  const incomingBirthday =
-    isValidDate(dateObject) && isInThePast(dateObject) && dateObject;
-
   const {
     earthBirthday,
     setEarthBirthday,
     birthdayData,
     ageInYears,
     nextBirthday,
-  } = useBirthday(incomingBirthday || null);
+  } = useBirthday();
 
   const { email, setEmail, submitReminder, submitting, snackbarProps } =
     useBirthdayReminder(earthBirthday);
+
+  useEffect(() => {
+    const dateObject = new Date(router.query.date as string);
+    const incomingBirthday =
+      isValidDate(dateObject) && isInThePast(dateObject) && dateObject;
+
+    if (incomingBirthday) {
+      setEarthBirthday(incomingBirthday);
+    }
+  }, [router.query.date]);
+
+  useEffect(() => {
+    const { email } = router.query;
+    console.log(email);
+    if (email) {
+      setEmail(email as string);
+    }
+  }, [router.query.email]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
 
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
@@ -124,7 +140,7 @@ export default function BirthdayTool() {
                   label="Email Address"
                   helperText="Enter Email Address"
                   value={email}
-                  onChange={setEmail}
+                  onChange={handleChange}
                   fullWidth
                   type="email"
                   required
