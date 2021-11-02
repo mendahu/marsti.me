@@ -11,10 +11,6 @@ const useBirthdayReminder = (earthDate: Date) => {
     message: "Success! We'll email you on your birthday!",
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
   const submitReminder = (event: React.FormEvent<HTMLFormElement>) => {
     setSubmitting(true);
     event.preventDefault();
@@ -75,7 +71,7 @@ const useBirthdayReminder = (earthDate: Date) => {
 
   return {
     email,
-    setEmail: handleChange,
+    setEmail,
     submitReminder,
     submitting,
     snackbarProps,

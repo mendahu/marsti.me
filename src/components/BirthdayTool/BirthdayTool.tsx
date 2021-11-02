@@ -14,8 +14,13 @@ import useBirthday from "../../hooks/useBirthday";
 import useBirthdayReminder from "../../hooks/useBirthdayReminder";
 import CircularProgress from "@mui/material/CircularProgress";
 import AlertSnackbar from "../AlertSnackbar/AlertSnackbar";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { isInThePast, isValidDate } from "../../helpers/dateValidation";
 
 export default function BirthdayTool() {
+  const router = useRouter();
+
   const {
     earthBirthday,
     setEarthBirthday,
@@ -27,9 +32,36 @@ export default function BirthdayTool() {
   const { email, setEmail, submitReminder, submitting, snackbarProps } =
     useBirthdayReminder(earthBirthday);
 
+  useEffect(() => {
+    const dateObject = new Date(router.query.date as string);
+    const incomingBirthday =
+      isValidDate(dateObject) && isInThePast(dateObject) && dateObject;
+
+    if (incomingBirthday) {
+      setEarthBirthday(incomingBirthday);
+    }
+  }, [router.query.date]);
+
+  useEffect(() => {
+    const { email } = router.query;
+    console.log(email);
+    if (email) {
+      setEmail(email as string);
+    }
+  }, [router.query.email]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
-      <Typography component="h2" variant="h3" color="primary">
+      <Typography
+        id="birthday-tool"
+        component="h2"
+        variant="h3"
+        color="primary"
+      >
         Get Your Mars Birthday
       </Typography>
 
@@ -100,7 +132,7 @@ export default function BirthdayTool() {
                   label="Email Address"
                   helperText="Enter Email Address"
                   value={email}
-                  onChange={setEmail}
+                  onChange={handleChange}
                   fullWidth
                   type="email"
                   required
