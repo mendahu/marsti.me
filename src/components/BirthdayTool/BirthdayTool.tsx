@@ -29,7 +29,12 @@ export default function BirthdayTool() {
 
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
-      <Typography component="h2" variant="h3" color="primary">
+      <Typography
+        id="birthday-tool"
+        component="h2"
+        variant="h3"
+        color="primary"
+      >
         Get Your Mars Birthday
       </Typography>
 
