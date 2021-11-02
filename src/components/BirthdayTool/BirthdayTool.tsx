@@ -16,18 +16,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 import AlertSnackbar from "../AlertSnackbar/AlertSnackbar";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { isInThePast, isValidDate } from "../../helpers/dateValidation";
 
 export default function BirthdayTool() {
   const router = useRouter();
-
-  function isValidDate(d: Date) {
-    return d instanceof Date && !isNaN(d.getTime());
-  }
-
-  function isInThePast(d: Date) {
-    const now = new Date();
-    return d < now;
-  }
 
   const {
     earthBirthday,
