@@ -42,27 +42,27 @@ export default function Ls(props: LsProps) {
         <TableBody>
           <TableRow>
             <TableCell>0&deg;</TableCell>
+            <TableCell>First day of Spring</TableCell>
+
+            <TableCell>Mar.</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>90&deg;</TableCell>
             <TableCell>First day of Summer</TableCell>
 
             <TableCell>Jun.</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>90&deg;</TableCell>
+            <TableCell>180&deg;</TableCell>
             <TableCell>First day of Fall</TableCell>
 
             <TableCell>Sep.</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>180&deg;</TableCell>
+            <TableCell>270&deg;</TableCell>
             <TableCell>First day of Winter</TableCell>
 
             <TableCell>Dec.</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>270&deg;</TableCell>
-            <TableCell>First day of Spring</TableCell>
-
-            <TableCell>Mar.</TableCell>
           </TableRow>
         </TableBody>
       </Table>

@@ -16,17 +16,21 @@ export default function Time(props: TimeProps) {
         60 minutes to 1 hour), and so they are also the same on Mars.
       </Typography>
       <Typography paragraph>
-        Measuring the duration of time (ie. "How long should I sleep for?") is
-        different from marking time during a day. When NASA landed their first
-        Mars surface mission in 1976 (the Viking lander), they adopted a
+        Measuring the duration of time (ie. "How long did I sleep?") is
+        different from marking time during a day on Mars. When NASA landed their
+        first Mars surface mission in 1976 (the Viking lander), they adopted a
         convention of a 24 hour clock just like Earth.
       </Typography>
       <Typography paragraph>
         This practice splits the Martian day up into 24 hours, with traditioanl
         sexagesimal divisions (60 minutes and 60 seconds). This means that the
         duration of time between 1PM and 2PM is actually longer than an hour.
-        But this is useful for humans, because now 2PM is roughly the same part
-        of a day on Mars as it is on Earth.
+        But this is useful for humans, because now 2PM is now the same place in
+        a day on Mars as it is on Earth.
+      </Typography>
+      <Typography paragraph>
+        Plus, we don't need to have an awkward 39 minute hour at the end of the
+        day!
       </Typography>
     </div>
   );

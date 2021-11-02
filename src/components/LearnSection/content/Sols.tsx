@@ -20,7 +20,7 @@ export default function Sols(props: SolsProps) {
       </Typography>
       <Typography paragraph>
         Mars spins slightly slower than Earth does, however. A solar day on Mars
-        is around 40 minutes more than Earth's.
+        is around 40 minutes longer than Earth's.
       </Typography>
       <Typography paragraph>
         Here is how the Martian day compares to Earth's:
@@ -47,6 +47,7 @@ export default function Sols(props: SolsProps) {
         </TableBody>
       </Table>
       <Typography paragraph>
+        In general, on Earth and on Mars, we use solar days to measure time.
         Learn more about the difference between a solar day and a sidereal day{" "}
         <Link href="https://earthsky.org/astronomy-essentials/what-is-sidereal-time/">
           here

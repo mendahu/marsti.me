@@ -13,18 +13,18 @@ export default function MeanSolar(props: MeanSolarProps) {
       <Typography paragraph>
         However, just like Earth, Mars' days are not actually constant in
         duration. The rotation speed of the planet and the eccentricity of its
-        orbit cause seasonal and daily changes to the duration. This is
+        orbit cause daily and seasonal changes to the duration. This is
         inconvenient for timekeeping.
       </Typography>
       <Typography paragraph>
-        So, just like on Earth, we adopt two types of solar time. "Mean" solar
-        time averages out the daily and seasonal variations over a year in order
-        to get a day duration that is constant.
+        So, just like on Earth, we adopt another type of solar time. "Mean"
+        solar time averages out the daily and seasonal variations over a year in
+        order to get a day duration that is constant.
       </Typography>
       <Typography paragraph>
-        Mean solar time is what you use everyday on Earth. It's also what
+        Mean solar time is what you use every day on Earth. It's also what
         engineers operating space missions on Mars surface use, and it's what
-        this site displays.
+        this site displays in its clocks.
       </Typography>
     </div>
   );
