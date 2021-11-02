@@ -61,6 +61,7 @@ export default function BirthdayTool() {
                 label="Earth Birthday"
                 value={earthBirthday}
                 onChange={setEarthBirthday}
+                maxDateTime={new Date()}
               />
             </Box>
             {earthBirthday && (
