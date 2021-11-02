@@ -9,6 +9,7 @@ import BirthdayTool from "../src/components/BirthdayTool/BirthdayTool";
 import Acknowledgements from "../src/components/Acknowledgements/Acknowledgements";
 import RelatedContent from "../src/components/RelatedContent/RelatedContent";
 import Support from "../src/components/Support/Support";
+import SocialMedia from "../src/components/SocialMedia/SocialMedia";
 
 export type Spacecraft = {
   id: string;
@@ -65,6 +66,7 @@ export default function Home() {
       <HomeGridContainer child={<LearnSection />} />
       <HomeGridContainer child={<RelatedContent />} />
       <HomeGridContainer child={<Support />} />
+      <HomeGridContainer child={<SocialMedia />} />
       <HomeGridContainer child={<Acknowledgements />} />
     </Container>
   );
