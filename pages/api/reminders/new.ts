@@ -85,6 +85,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const templateVars = {
     earthBirthday: format(earthBirthday, "MMMM do, yyyy"),
+    earthDateString: earthBirthday,
     ls: {
       value: formattedLs,
       season: getSeason(ls),
