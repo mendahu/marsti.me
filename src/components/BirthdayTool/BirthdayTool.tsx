@@ -129,7 +129,7 @@ export default function BirthdayTool() {
                   variant="h5"
                   sx={{ alignSelf: "flex-start", mb: "2rem" }}
                 >
-                  Get an email remainder!
+                  Get an email reminder!
                 </Typography>
                 <TextField
                   variant="outlined"
