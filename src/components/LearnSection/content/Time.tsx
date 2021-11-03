@@ -22,7 +22,7 @@ export default function Time(props: TimeProps) {
         convention of a 24 hour clock just like Earth.
       </Typography>
       <Typography paragraph>
-        This practice splits the Martian day up into 24 hours, with traditioanl
+        This practice splits the Martian day up into 24 hours, with traditional
         sexagesimal divisions (60 minutes and 60 seconds). This means that the
         duration of time between 1PM and 2PM is actually longer than an hour.
         But this is useful for humans, because now 2PM is now the same place in
