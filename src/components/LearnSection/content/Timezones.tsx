@@ -10,14 +10,14 @@ export default function Timezones(props: TimezonesProps) {
         Just like Earth, Mars is round. At any given time, parts of the planet
         are in daylight, facing the Sun, while others are in darkness, facing
         away from the Sun. Local time varies depending on your longitude, which
-        is inconvenient if you need to coorindate with someone in a different
+        is inconvenient if you need to coordinate with someone in a different
         longitude.
       </Typography>
       <Typography paragraph>
         On Earth, we've solved this problem using timezones. But timezones are a
         compromise, because the position of the sun changes every step you take.
-        Imagine having to change your clock by a 10 seconds because you commuted
-        a few kilometres to the East or West! Having timezones generally 1 hour
+        Imagine having to change your clock by 10 seconds because you commuted a
+        few kilometres to the East or West! Having timezones generally 1 hour
         wide keeps the meaning of 2PM the same everywhere, but allows proximate
         communities to all work on a shared time.
       </Typography>
