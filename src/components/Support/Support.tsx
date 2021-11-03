@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 import styles from "./styles/Support.module.css";
 import Image from "next/image";
+import patreonLogo from "../../../public/Digital-Patreon-Logo_FieryCoral.png";
+import merchLogo from "../../../public/shirt.png";
+import paypalLogo from "../../../public/paypal.jpeg";
 
 export type SupportProps = {};
 
@@ -40,7 +43,7 @@ export default function Support(props: SupportProps) {
                     target="_blank"
                   >
                     <Image
-                      src="/Digital-Patreon-Logo_FieryCoral.png"
+                      src={patreonLogo}
                       width="60px"
                       height="60px"
                       layout="fixed"
@@ -66,7 +69,7 @@ export default function Support(props: SupportProps) {
                 <TableCell>
                   <Link href="https://shop.wemartians.com" target="_blank">
                     <Image
-                      src="/shirt.png"
+                      src={merchLogo}
                       width="70px"
                       height="70px"
                       layout="fixed"
@@ -92,7 +95,7 @@ export default function Support(props: SupportProps) {
                     target="_blank"
                   >
                     <Image
-                      src="/paypal.jpeg"
+                      src={paypalLogo}
                       width="68px"
                       height="44px"
                       layout="fixed"

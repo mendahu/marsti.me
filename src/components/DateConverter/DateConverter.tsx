@@ -15,6 +15,7 @@ import { DateTimePicker } from "@mui/lab";
 import { Box } from "@mui/system";
 import { isValidDate } from "../../helpers/dateValidation";
 import Image from "next/image";
+import dateConverterPic from "../../../public/earth-mars.png";
 
 export default function DateConverter() {
   const [earthDate, setEarthDate] = useState<Date>(new Date());
@@ -43,9 +44,7 @@ export default function DateConverter() {
   const ImageComponent = () => {
     return (
       <Image
-        src={"/earth-mars.png"}
-        height="100"
-        width="300"
+        src={dateConverterPic}
         layout="responsive"
         alt={"Picture of Earth and Mars"}
       />

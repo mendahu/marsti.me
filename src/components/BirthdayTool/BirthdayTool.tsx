@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { isInThePast, isValidDate } from "../../helpers/dateValidation";
 import Image from "next/image";
+import birthdayPic from "../../../public/birthday_banner.png";
 
 export default function BirthdayTool() {
   const router = useRouter();
@@ -62,9 +63,7 @@ export default function BirthdayTool() {
   const ImageComponent = () => {
     return (
       <Image
-        src={"/birthday_banner.png"}
-        height="100"
-        width="300"
+        src={birthdayPic}
         layout="responsive"
         alt={"Picture of a Birthday Cake"}
       />

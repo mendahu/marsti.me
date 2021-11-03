@@ -11,11 +11,24 @@ import RelatedContent from "../src/components/RelatedContent/RelatedContent";
 import Support from "../src/components/Support/Support";
 import SocialMedia from "../src/components/SocialMedia/SocialMedia";
 
+import zhurongBanner from "../public/zhurong_banner.png";
+import ingenuityBanner from "../public/ingenuity_banner.png";
+import perseveranceBanner from "../public/perseverance_banner.png";
+import mslBanner from "../public/msl_banner.png";
+import inSightBanner from "../public/insight_banner.png";
+
+const banners = {
+  igy: ingenuityBanner,
+  msl: mslBanner,
+  m20: perseveranceBanner,
+  zhu: zhurongBanner,
+  ins: inSightBanner,
+};
+
 export type Spacecraft = {
   id: string;
   epoch: string;
   name: string;
-  banner: string;
   coords: {
     lon: number;
     lat: number;
@@ -48,7 +61,7 @@ function MissionCards() {
             lat={coords[id].lat}
             lon={coords[id].lon}
             missionStart={new Date(vehicle.epoch)}
-            bannerUrl={vehicle.banner}
+            bannerUrl={banners[id]}
           />
         );
       })}
