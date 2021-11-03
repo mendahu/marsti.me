@@ -17,6 +17,7 @@ import AlertSnackbar from "../AlertSnackbar/AlertSnackbar";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { isInThePast, isValidDate } from "../../helpers/dateValidation";
+import Image from "next/image";
 
 export default function BirthdayTool() {
   const router = useRouter();
@@ -58,6 +59,18 @@ export default function BirthdayTool() {
     setEmail(event.target.value);
   };
 
+  const ImageComponent = () => {
+    return (
+      <Image
+        src={"/birthday_banner.png"}
+        height="100"
+        width="300"
+        layout="responsive"
+        alt={"Picture of a Birthday Cake"}
+      />
+    );
+  };
+
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
       <Typography
@@ -70,12 +83,7 @@ export default function BirthdayTool() {
       </Typography>
 
       <Card raised sx={{ mt: "2rem" }}>
-        <CardMedia
-          component="img"
-          image={"birthday_banner.png"}
-          title={"Get your Mars Birthday"}
-          alt={"Picture of a Birthday Cake"}
-        />
+        <CardMedia component={ImageComponent} />
         <CardContent>
           <Stack spacing={3}>
             <Box>

@@ -14,6 +14,7 @@ import { getSeason } from "../../helpers/getSeason";
 import { DateTimePicker } from "@mui/lab";
 import { Box } from "@mui/system";
 import { isValidDate } from "../../helpers/dateValidation";
+import Image from "next/image";
 
 export default function DateConverter() {
   const [earthDate, setEarthDate] = useState<Date>(new Date());
@@ -39,6 +40,18 @@ export default function DateConverter() {
 
   const dateIsComplete = isValidDate(earthDate);
 
+  const ImageComponent = () => {
+    return (
+      <Image
+        src={"/earth-mars.png"}
+        height="100"
+        width="300"
+        layout="responsive"
+        alt={"Picture of Earth and Mars"}
+      />
+    );
+  };
+
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
       <Typography component="h2" variant="h3" color="primary">
@@ -46,12 +59,7 @@ export default function DateConverter() {
       </Typography>
 
       <Card raised sx={{ mt: "2rem" }}>
-        <CardMedia
-          component="img"
-          image={"earth-mars.png"}
-          title={"Convert Earth Date to Mars Date"}
-          alt={"Picture of Earth and MArs"}
-        />
+        <CardMedia component={ImageComponent} />
         <CardContent>
           <Stack>
             <Box mt={"1rem"}>
