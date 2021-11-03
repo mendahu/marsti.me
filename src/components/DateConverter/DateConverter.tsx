@@ -13,6 +13,7 @@ import { useState } from "react";
 import { getSeason } from "../../helpers/getSeason";
 import { DateTimePicker } from "@mui/lab";
 import { Box } from "@mui/system";
+import { isValidDate } from "../../helpers/dateValidation";
 
 export default function DateConverter() {
   const [earthDate, setEarthDate] = useState<Date>(new Date());
@@ -35,6 +36,8 @@ export default function DateConverter() {
   const clockSize = isWideScreen ? "2.5rem" : "2.2rem";
   const dateSize = isWideScreen ? "1.6rem" : "1.3rem";
   const seasonType = isWideScreen ? "body1" : "body2";
+
+  const dateIsComplete = isValidDate(earthDate);
 
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
@@ -66,30 +69,37 @@ export default function DateConverter() {
                 onChange={setEarthDate}
               />
             </Box>
-            <Typography
-              fontSize={clockSize}
-              variant="clock"
-              mt="1rem"
-              color="textSecondary"
-              align="center"
-            >
-              {mst} <abbr title="Mars Coordinated Time">MTC</abbr>
-            </Typography>
-            <Typography
-              align="center"
-              fontSize={dateSize}
-              variant="body1"
-              color="textSecondary"
-            >
-              LS {ls} {bull} MY {my}
-            </Typography>
-            <Typography
-              align="center"
-              variant={seasonType}
-              color="textSecondary"
-            >
-              {getSeason(marsDate.getLs())}, Northern Hemisphere
-            </Typography>
+
+            {dateIsComplete && (
+              <Typography
+                fontSize={clockSize}
+                variant="clock"
+                mt="1rem"
+                color="textSecondary"
+                align="center"
+              >
+                {mst} <abbr title="Mars Coordinated Time">MTC</abbr>
+              </Typography>
+            )}
+            {dateIsComplete && (
+              <Typography
+                align="center"
+                fontSize={dateSize}
+                variant="body1"
+                color="textSecondary"
+              >
+                LS {ls} {bull} MY {my}
+              </Typography>
+            )}
+            {dateIsComplete && (
+              <Typography
+                align="center"
+                variant={seasonType}
+                color="textSecondary"
+              >
+                {getSeason(marsDate.getLs())}, Northern Hemisphere
+              </Typography>
+            )}
           </Stack>
         </CardContent>
       </Card>

@@ -50,7 +50,11 @@ export default function BirthdayTool() {
     }
   }, [router.query.email]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDatechange = (date: Date) => {
+    isValidDate(date) && setEarthBirthday(date);
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
@@ -92,7 +96,7 @@ export default function BirthdayTool() {
                 )}
                 label="Earth Birthday"
                 value={earthBirthday}
-                onChange={setEarthBirthday}
+                onChange={handleDatechange}
                 maxDateTime={new Date()}
               />
             </Box>
@@ -132,7 +136,7 @@ export default function BirthdayTool() {
                   label="Email Address"
                   helperText="Enter Email Address"
                   value={email}
-                  onChange={handleChange}
+                  onChange={handleEmailChange}
                   fullWidth
                   type="email"
                   required
