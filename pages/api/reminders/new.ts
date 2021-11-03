@@ -1,7 +1,7 @@
 import { MarsDate } from "mars-date-utils";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { generateCronExpression } from "../../../src/helpers/generateCronExpression";
-import { add, format } from "date-fns";
+import { add, format, sub } from "date-fns";
 import { getSeason } from "../../../src/helpers/getSeason";
 import ordinal from "ordinal";
 import { formatLs } from "../../../src/helpers/formatLs";
@@ -78,9 +78,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Generate Email Template Data
   const ls = marsDate.getLs();
   const formattedLs = formatLs(ls);
-  const nextNextMarsBirthday = new MarsDate(
-    add(earthBirthday, { days: 2 })
-  ).getNextAnniversary();
+  const nextNextMarsBirthday = marsDate.getNextAnniversary(2);
   const currentAge = Math.round(marsDate.getAgeInYears());
 
   const templateVars = {
