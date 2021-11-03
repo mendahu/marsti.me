@@ -9,12 +9,11 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import styles from "./styles/RelatedContent.module.css";
+import wmLogo from "../../../public/wm-logo.png";
+import ofnLogo from "../../../public/ofn-logo.png";
 import Image from "next/image";
 
-export type RelatedContentProps = {};
-
-export default function RelatedContent(props: RelatedContentProps) {
+export default function RelatedContent() {
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
       <Typography component="h2" variant="h3" color="primary">
@@ -28,7 +27,7 @@ export default function RelatedContent(props: RelatedContentProps) {
                 <TableCell>
                   <Link href="https://www.wemartians.com" target="_blank">
                     <Image
-                      src="/wm-logo.png"
+                      src={wmLogo}
                       width="60px"
                       height="60px"
                       layout="fixed"
@@ -50,7 +49,7 @@ export default function RelatedContent(props: RelatedContentProps) {
                 <TableCell>
                   <Link href="https://www.offnom.com" target="_blank">
                     <Image
-                      src="/ofn-logo.png"
+                      src={ofnLogo}
                       width="70px"
                       height="70px"
                       layout="fixed"
