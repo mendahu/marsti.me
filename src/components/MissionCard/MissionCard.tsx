@@ -8,6 +8,7 @@ import {
   Grid,
   useMediaQuery,
 } from "@mui/material";
+import Image from "next/image";
 
 export type MissionCardProps = {
   name: string;
@@ -31,15 +32,22 @@ export const MissionCard = (props: MissionCardProps) => {
   const clockSize = isWideScreen ? "3.8rem" : "3.3rem";
   const coordsSize = isWideScreen ? "1.2rem" : "1rem";
 
+  const ImageComponent = () => {
+    return (
+      <Image
+        src={props.bannerUrl}
+        height="100"
+        width="300"
+        layout="responsive"
+        alt={props.name}
+      />
+    );
+  };
+
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
       <Card raised>
-        <CardMedia
-          component="img"
-          image={props.bannerUrl}
-          title={props.name}
-          alt={props.name}
-        />
+        <CardMedia component={ImageComponent} />
         <CardContent component="article">
           <Grid container justifyContent="space-between">
             <Grid item xs={6}>
