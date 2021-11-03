@@ -10,7 +10,7 @@ export default function Timezones(props: TimezonesProps) {
         Just like Earth, Mars is round. At any given time, parts of the planet
         are in daylight, facing the Sun, while others are in darkness, facing
         away from the Sun. Local time varies depending on your longitude, which
-        is inconvenient if you need to coorindate with someone in a different
+        is inconvenient if you need to coordinate with someone in a different
         longitude.
       </Typography>
       <Typography paragraph>
