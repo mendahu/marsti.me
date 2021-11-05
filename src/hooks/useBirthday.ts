@@ -8,7 +8,7 @@ const useBirthday = (date?: Date) => {
   const [earthBirthday, setEarthBirthday] = useState<Date | null>(date || null);
   const marsDate = new MarsDate(earthBirthday);
 
-  const ageInYears = Math.round(marsDate.getAgeInYears());
+  const ageInYears = Math.floor(marsDate.getAgeInYears());
   const nextBirthday = format(
     marsDate.getNextAnniversary(),
     "EEEE, MMMM do, yyyy"
