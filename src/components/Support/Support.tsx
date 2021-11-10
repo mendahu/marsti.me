@@ -27,7 +27,7 @@ export default function Support(props: SupportProps) {
         <CardContent>
           <Typography>
             MARSTI.ME was created and is maintained by me,{" "}
-            <Link href="https:/twitter.com/JakeOnOrbit" target="_blank">
+            <Link href="https://twitter.com/JakeOnOrbit" target="_blank">
               Jake Robins
             </Link>
             , an independent content creator and developer. If you get value
