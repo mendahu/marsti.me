@@ -41,7 +41,7 @@ export default function RelatedContent() {
                     </Link>
                   </Typography>
                   <Typography variant="body1" paragraph>
-                    A Podcast about Mars Exploration
+                    A Podcast about exploring the solar system
                   </Typography>
                 </TableCell>
               </TableRow>
