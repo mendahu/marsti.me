@@ -7,6 +7,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useCurrentTime } from "../../contexts/CurrentTimeContext";
+import * as ga from "../../../lib/ga";
 
 const SIGNIFICANT_DIGITS_LS: number = 4;
 
@@ -171,6 +172,7 @@ export default function HomeHeader() {
             href="#faq"
             size="large"
             fullWidth
+            onClick={() => ga.event({ action: "learn-button", params: {} })}
           >
             What do these mean?
           </Button>

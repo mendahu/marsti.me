@@ -1,6 +1,7 @@
 import { AlertColor } from "@mui/material";
 import { useState } from "react";
 import { AlertSnackbarProps } from "../components/AlertSnackbar/AlertSnackbar";
+import * as ga from "../../lib/ga";
 
 const useBirthdayReminder = (earthDate: Date) => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,10 @@ const useBirthdayReminder = (earthDate: Date) => {
   const submitReminder = (event: React.FormEvent<HTMLFormElement>) => {
     setSubmitting(true);
     event.preventDefault();
+    ga.event({
+      action: "set_birthday_reminder",
+      params: {},
+    });
 
     fetch("/api/reminders/new", {
       method: "POST",

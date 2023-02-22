@@ -9,15 +9,21 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import styles from "./styles/Support.module.css";
 import Image from "next/image";
 import patreonLogo from "../../../public/Digital-Patreon-Logo_FieryCoral.png";
 import merchLogo from "../../../public/shirt.png";
 import paypalLogo from "../../../public/paypal.jpeg";
+import * as ga from "../../../lib/ga";
 
 export type SupportProps = {};
 
 export default function Support(props: SupportProps) {
+  const linkClick = (property: string) => {
+    ga.event({
+      action: "content-click",
+      params: property,
+    });
+  };
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
       <Typography component="h2" variant="h3" color="primary">
@@ -41,6 +47,7 @@ export default function Support(props: SupportProps) {
                   <Link
                     href="https://www.patreon.com/wemartians"
                     target="_blank"
+                    onClick={() => linkClick("patreon")}
                   >
                     <Image
                       src={patreonLogo}
@@ -55,6 +62,7 @@ export default function Support(props: SupportProps) {
                     <Link
                       href="https://www.patreon.com/wemartians"
                       target="_blank"
+                      onClick={() => linkClick("patreon")}
                     >
                       Patreon
                     </Link>
@@ -67,7 +75,11 @@ export default function Support(props: SupportProps) {
               </TableRow>
               <TableRow>
                 <TableCell>
-                  <Link href="https://shop.wemartians.com" target="_blank">
+                  <Link
+                    href="https://shop.wemartians.com"
+                    target="_blank"
+                    onClick={() => linkClick("shop")}
+                  >
                     <Image
                       src={merchLogo}
                       width="70px"
@@ -78,7 +90,11 @@ export default function Support(props: SupportProps) {
                 </TableCell>
                 <TableCell>
                   <Typography component="h3" variant="h6">
-                    <Link href="https://shop.wemartians.com" target="_blank">
+                    <Link
+                      href="https://shop.wemartians.com"
+                      target="_blank"
+                      onClick={() => linkClick("shop")}
+                    >
                       Merchandise
                     </Link>
                   </Typography>
@@ -93,6 +109,7 @@ export default function Support(props: SupportProps) {
                   <Link
                     href="https://www.paypal.com/paypalme/wemartians"
                     target="_blank"
+                    onClick={() => linkClick("paypal")}
                   >
                     <Image
                       src={paypalLogo}
@@ -107,6 +124,7 @@ export default function Support(props: SupportProps) {
                     <Link
                       href="https://www.paypal.com/paypalme/wemartians"
                       target="_blank"
+                      onClick={() => linkClick("paypal")}
                     >
                       Paypal
                     </Link>

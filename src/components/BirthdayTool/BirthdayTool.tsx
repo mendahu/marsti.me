@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import { isInThePast, isValidDate } from "../../helpers/dateValidation";
 import Image from "next/image";
 import birthdayPic from "../../../public/birthday_banner.png";
+import * as ga from "../../../lib/ga";
 
 export default function BirthdayTool() {
   const router = useRouter();
@@ -46,14 +47,17 @@ export default function BirthdayTool() {
 
   useEffect(() => {
     const { email } = router.query;
-    console.log(email);
     if (email) {
       setEmail(email as string);
     }
   }, [router.query.email]);
 
   const handleDatechange = (date: Date) => {
-    isValidDate(date) && setEarthBirthday(date);
+    if (!isValidDate) {
+      return;
+    }
+    ga.event({ action: "birthday-convert", params: {} });
+    setEarthBirthday(date);
   };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {

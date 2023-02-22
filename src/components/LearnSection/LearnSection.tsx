@@ -18,6 +18,7 @@ import {
 import { useState } from "react";
 import { Box } from "@mui/system";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import * as ga from "../../../lib/ga";
 
 const faqData = [
   {
@@ -58,7 +59,16 @@ export default function LearnSection() {
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
-    (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+    (panel: string, label: string) =>
+    (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+      if (!isExpanded) {
+        ga.event({
+          action: "expand_learn",
+          params: {
+            panel: label,
+          },
+        });
+      }
       setExpanded(isExpanded ? panel : false);
     };
 
@@ -74,7 +84,7 @@ export default function LearnSection() {
           return (
             <Accordion
               expanded={expanded === id}
-              onChange={handleChange(id)}
+              onChange={handleChange(id, faqItem.label)}
               key={id}
             >
               <AccordionSummary

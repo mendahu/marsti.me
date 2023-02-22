@@ -6,6 +6,9 @@ import { useTime } from "../src/hooks/useTime";
 import CurrentTimeProvider from "../src/contexts/CurrentTimeContext";
 import Head from "next/head";
 import SocialHeader from "../src/components/SocialHeader/SocialHeader";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import * as ga from "../lib/ga";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -56,6 +59,20 @@ const theme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      ga.pageview(url);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
