@@ -16,6 +16,7 @@ import { Box } from "@mui/system";
 import { isValidDate } from "../../helpers/dateValidation";
 import Image from "next/image";
 import dateConverterPic from "../../../public/earth-mars.png";
+import * as ga from "../../../lib/ga";
 
 export default function DateConverter() {
   const [earthDate, setEarthDate] = useState<Date>(new Date());
@@ -73,7 +74,10 @@ export default function DateConverter() {
                 )}
                 label="Earth Date"
                 value={earthDate}
-                onChange={setEarthDate}
+                onChange={(date) => {
+                  ga.event({ action: "date-convert", params: {} });
+                  setEarthDate(date);
+                }}
               />
             </Box>
 

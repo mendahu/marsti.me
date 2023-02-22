@@ -12,8 +12,15 @@ import {
 import wmLogo from "../../../public/wm-logo.png";
 import ofnLogo from "../../../public/ofn-logo.png";
 import Image from "next/image";
+import * as ga from "../../../lib/ga";
 
 export default function RelatedContent() {
+  const linkClick = (property: string) => {
+    ga.event({
+      action: "content-click",
+      params: property,
+    });
+  };
   return (
     <Grid item xs={12} md={6} maxWidth="400px">
       <Typography component="h2" variant="h3" color="primary">
@@ -25,7 +32,11 @@ export default function RelatedContent() {
             <TableBody>
               <TableRow>
                 <TableCell>
-                  <Link href="https://www.wemartians.com" target="_blank">
+                  <Link
+                    href="https://www.wemartians.com"
+                    target="_blank"
+                    onClick={() => linkClick("wemartians")}
+                  >
                     <Image
                       src={wmLogo}
                       width="60px"
@@ -36,7 +47,11 @@ export default function RelatedContent() {
                 </TableCell>
                 <TableCell>
                   <Typography component="h3" variant="h6">
-                    <Link href="https://www.wemartians.com" target="_blank">
+                    <Link
+                      href="https://www.wemartians.com"
+                      target="_blank"
+                      onClick={() => linkClick("wemartians")}
+                    >
                       WeMartians
                     </Link>
                   </Typography>
@@ -47,7 +62,11 @@ export default function RelatedContent() {
               </TableRow>
               <TableRow>
                 <TableCell>
-                  <Link href="https://www.offnom.com" target="_blank">
+                  <Link
+                    href="https://www.offnom.com"
+                    target="_blank"
+                    onClick={() => linkClick("off-nominal")}
+                  >
                     <Image
                       src={ofnLogo}
                       width="70px"
@@ -58,7 +77,11 @@ export default function RelatedContent() {
                 </TableCell>
                 <TableCell>
                   <Typography component="h3" variant="h6">
-                    <Link href="https://www.offnom.com" target="_blank">
+                    <Link
+                      href="https://www.offnom.com"
+                      target="_blank"
+                      onClick={() => linkClick("off-nominal")}
+                    >
                       Off-Nominal
                     </Link>
                   </Typography>
