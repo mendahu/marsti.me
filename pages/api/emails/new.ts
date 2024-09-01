@@ -34,7 +34,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   const transporter = nodemailer.createTransport({
     host,
     port,
-    secure: true,
+    secure: false, // false uses TLS instead of SSL
     auth: {
       user,
       pass,
